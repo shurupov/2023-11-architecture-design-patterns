@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
-import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -12,9 +11,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import ru.shurupov.otus.architecture.equation.exception.CoefficientAEqualsZeroException;
 import ru.shurupov.otus.architecture.equation.exception.IllegalCoefficientException;
+import ru.shurupov.otus.architecture.equation.exception.NegativeOrZeroEException;
 import ru.shurupov.otus.architecture.equation.service.SquareEquationSolver;
 
 class SquareEquationSolverTest {
@@ -46,9 +46,16 @@ class SquareEquationSolverTest {
 
   @ParameterizedTest
   @ArgumentsSource(CoefficientsArgumentsProvider.class)
-  void givenIllegalCoefficientValue_whenSolveExecuted_thenExceptionThrown(Coeffificients coeffificients) {
-    assertThatThrownBy(() -> SquareEquationSolver.solve(coeffificients.a, coeffificients.b, coeffificients.c, 0.001d))
+  void givenIllegalCoefficientValue_whenSolveExecuted_thenIllegalCoefficientExceptionThrown(Coeffificients coeffificients) {
+    assertThatThrownBy(() -> SquareEquationSolver.solve(coeffificients.a, coeffificients.b, coeffificients.c, coeffificients.e))
         .isOfAnyClassIn(IllegalCoefficientException.class);
+  }
+
+  @ParameterizedTest
+  @ValueSource(doubles = {0d, -0.1})
+  void givenZeroOrNegativeE_whenSolveExecuted_thenNegativeOrZeroEExceptionThrown(double e) {
+    assertThatThrownBy(() -> SquareEquationSolver.solve(1, 1, 1, e))
+        .isOfAnyClassIn(NegativeOrZeroEException.class);
   }
 
   static class CoefficientsArgumentsProvider implements ArgumentsProvider {
@@ -56,18 +63,18 @@ class SquareEquationSolverTest {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
       return Stream.of(
-          Arguments.of(new Coeffificients(Double.NaN, 1, 1)),
-          Arguments.of(new Coeffificients(1, Double.NaN, 1)),
-          Arguments.of(new Coeffificients(1, 1, Double.NaN)),
-          Arguments.of(new Coeffificients(Double.NaN, Double.NaN, Double.NaN)),
-          Arguments.of(new Coeffificients(Double.NEGATIVE_INFINITY, 1, 1)),
-          Arguments.of(new Coeffificients(1, Double.NEGATIVE_INFINITY, 1)),
-          Arguments.of(new Coeffificients(1, 1, Double.NEGATIVE_INFINITY)),
-          Arguments.of(new Coeffificients(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY)),
-          Arguments.of(new Coeffificients(Double.POSITIVE_INFINITY, 1, 1)),
-          Arguments.of(new Coeffificients(1, Double.POSITIVE_INFINITY, 1)),
-          Arguments.of(new Coeffificients(1, 1, Double.POSITIVE_INFINITY)),
-          Arguments.of(new Coeffificients(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY))
+          Arguments.of(new Coeffificients(Double.NaN, 1, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, Double.NaN, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, Double.NaN, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, 1, Double.NaN)),
+          Arguments.of(new Coeffificients(Double.NEGATIVE_INFINITY, 1, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, Double.NEGATIVE_INFINITY, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, Double.NEGATIVE_INFINITY, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, 1, Double.NEGATIVE_INFINITY)),
+          Arguments.of(new Coeffificients(Double.POSITIVE_INFINITY, 1, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, Double.POSITIVE_INFINITY, 1, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, Double.POSITIVE_INFINITY, 0.0001)),
+          Arguments.of(new Coeffificients(1, 1, 1, Double.POSITIVE_INFINITY))
       );
     }
   }
@@ -77,5 +84,6 @@ class SquareEquationSolverTest {
     double a;
     double b;
     double c;
+    double e;
   }
 }
