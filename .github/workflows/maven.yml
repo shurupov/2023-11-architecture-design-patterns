@@ -1,3 +1,5 @@
+name: Architecture and Design Patterns
+
 on: push
 
 jobs:
