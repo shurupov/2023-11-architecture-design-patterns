@@ -13,6 +13,13 @@ class SquareEquationSolverTest {
 
   @Test
   void givenCoefficientsForTwoRoots_whenSolveExecuted_thenTwoRootsArrayReturned() {
-    assertThat(SquareEquationSolver.solve(1d, 0d, -1d, 0.001d)).contains(1d, -1d);
+    assertThat(SquareEquationSolver.solve(1d, 0d, -1d, 0.001d))
+        .containsExactlyInAnyOrder(1d, -1d);
+  }
+
+  @Test
+  void givenCoefficientsForOnRoot_whenSolveExecuted_thenOneRootArrayReturned() {
+    assertThat(SquareEquationSolver.solve(2d, 2d, 1d, 0.001d))
+        .containsExactlyInAnyOrder(-1d);
   }
 }
