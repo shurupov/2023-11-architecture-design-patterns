@@ -59,7 +59,15 @@ class SquareEquationSolverTest {
           Arguments.of(new Coeffificients(Double.NaN, 1, 1)),
           Arguments.of(new Coeffificients(1, Double.NaN, 1)),
           Arguments.of(new Coeffificients(1, 1, Double.NaN)),
-          Arguments.of(new Coeffificients(Double.NaN, Double.NaN, Double.NaN))
+          Arguments.of(new Coeffificients(Double.NaN, Double.NaN, Double.NaN)),
+          Arguments.of(new Coeffificients(Double.NEGATIVE_INFINITY, 1, 1)),
+          Arguments.of(new Coeffificients(1, Double.NEGATIVE_INFINITY, 1)),
+          Arguments.of(new Coeffificients(1, 1, Double.NEGATIVE_INFINITY)),
+          Arguments.of(new Coeffificients(Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY)),
+          Arguments.of(new Coeffificients(Double.POSITIVE_INFINITY, 1, 1)),
+          Arguments.of(new Coeffificients(1, Double.POSITIVE_INFINITY, 1)),
+          Arguments.of(new Coeffificients(1, 1, Double.POSITIVE_INFINITY)),
+          Arguments.of(new Coeffificients(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY))
       );
     }
   }
