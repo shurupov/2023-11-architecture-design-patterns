@@ -12,6 +12,7 @@
 
     <modules>
         <module>01-unit-testing</module>
+        <module>02-abstractions-resistant-to-change</module>
     </modules>
 
 

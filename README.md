@@ -16,3 +16,5 @@ Certificate: (will be added later)
 ## Modules/Homeworks
 - Testing complexity (Unit testing, TDD)
   - [Unit testing, TDD](01-unit-testing)
+- Software development speed
+  - [Abstractions resistant to change](02-abstractions-resistant-to-change)
