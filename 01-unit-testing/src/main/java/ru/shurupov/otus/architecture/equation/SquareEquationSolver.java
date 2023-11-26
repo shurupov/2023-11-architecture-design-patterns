@@ -15,6 +15,12 @@ public class SquareEquationSolver {
       };
     }
 
+    if (Math.abs(d) < e) {
+      return new double[]{
+          -b / (2 * a)
+      };
+    }
+
     throw new RuntimeException("Unimplemented case");
   }
 }
