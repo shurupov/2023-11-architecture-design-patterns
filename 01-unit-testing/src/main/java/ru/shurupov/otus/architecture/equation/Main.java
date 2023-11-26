@@ -1,5 +1,7 @@
 package ru.shurupov.otus.architecture.equation;
 
+import ru.shurupov.otus.architecture.equation.service.SquareEquationSolver;
+
 public class Main {
 
   public static void main(String[] args) {

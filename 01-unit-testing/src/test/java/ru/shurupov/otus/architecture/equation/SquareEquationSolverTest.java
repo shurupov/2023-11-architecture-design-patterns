@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.equation.exception.CoefficientAEqualsZeroException;
+import ru.shurupov.otus.architecture.equation.service.SquareEquationSolver;
 
 class SquareEquationSolverTest {
 
