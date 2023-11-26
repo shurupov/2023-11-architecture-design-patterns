@@ -15,10 +15,12 @@ public class MovableMapAdapter implements Movable {
 
   public static final String COORDINATE_X_PROPERTY_NAME = "coordX";
   public static final String COORDINATE_Y_PROPERTY_NAME = "coordY";
-  public static final int DELTA_COORDINATE_X_ELEMENT_INDEX = 0;
-  public static final int DELTA_COORDINATE_Y_ELEMENT_INDEX = 1;
+  public static final int COORDINATE_X_ELEMENT_INDEX = 0;
+  public static final int COORDINATE_Y_ELEMENT_INDEX = 1;
   public static final String DELTA_COORDINATE_X_PROPERTY_NAME = "deltaCoordX";
   public static final String DELTA_COORDINATE_Y_PROPERTY_NAME = "deltaCoordY";
+  public static final int DELTA_COORDINATE_X_ELEMENT_INDEX = 0;
+  public static final int DELTA_COORDINATE_Y_ELEMENT_INDEX = 1;
 
   private final Map<String, Object> movableObject;
 
@@ -51,14 +53,17 @@ public class MovableMapAdapter implements Movable {
   @Override
   public void move(Velocity velocity) {
     try {
+
+      Position position = this.getPosition();
+
       movableObject.put(
           COORDINATE_X_PROPERTY_NAME,
-          (Double) movableObject.get(COORDINATE_X_PROPERTY_NAME)
+          position.getCoords()[COORDINATE_X_ELEMENT_INDEX]
               + velocity.getPositionDelta()[DELTA_COORDINATE_X_ELEMENT_INDEX]
       );
       movableObject.put(
           COORDINATE_Y_PROPERTY_NAME,
-          (Double) movableObject.get(COORDINATE_Y_PROPERTY_NAME)
+          position.getCoords()[COORDINATE_Y_ELEMENT_INDEX]
               + velocity.getPositionDelta()[DELTA_COORDINATE_Y_ELEMENT_INDEX]
       );
     } catch (Throwable e) {
