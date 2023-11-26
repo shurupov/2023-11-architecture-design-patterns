@@ -8,6 +8,13 @@ public class SquareEquationSolver {
       return new double[0];
     }
 
+    if (d > e) {
+      return new double[] {
+          (-b + Math.sqrt(d)) / (2 * a),
+          (-b - Math.sqrt(d)) / (2 * a)
+      };
+    }
+
     throw new RuntimeException("Unimplemented case");
   }
 }
