@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>01-unit-testing</module>
     </modules>
 
 
