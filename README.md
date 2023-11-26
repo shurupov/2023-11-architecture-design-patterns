@@ -1,6 +1,8 @@
 # Architecture and Design Patterns Course Repo
 
-Course: [Architecture and Design Patterns](hhttps://otus.ru/lessons/patterns/)
+![Workflow](https://github.com/shurupov/2023-11-architecture-design-patterns/actions/workflows/maven.yml/badge.svg)
+
+Course: [Architecture and Design Patterns](https://otus.ru/lessons/patterns/)
 
 Student: [Evgeny Shurupov](https://www.linkedin.com/in/evgeny-shurupov/)
 
@@ -12,4 +14,5 @@ Certificate: (will be added later)
 </details>
 
 ## Modules/Homeworks
-- Testing complexity (Testing, TDD)
+- Testing complexity (Unit testing, TDD)
+  - [Unit testing, TDD](01-unit-testing)
