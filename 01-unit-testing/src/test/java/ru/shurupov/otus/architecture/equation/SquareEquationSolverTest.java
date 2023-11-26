@@ -13,6 +13,6 @@ class SquareEquationSolverTest {
 
   @Test
   void givenCoefficientsForTwoRoots_whenSolveExecuted_thenTwoRootsArrayReturned() {
-    assertThat(SquareEquationSolver.solve(1d, 0d, -1d, 0.001d)).isEmpty();
+    assertThat(SquareEquationSolver.solve(1d, 0d, -1d, 0.001d)).contains(1d, -1d);
   }
 }

@@ -2,7 +2,7 @@
 
 ![Workflow](https://github.com/shurupov/2023-11-architecture-design-patterns/actions/workflows/maven.yml/badge.svg)
 
-Course: [Architecture and Design Patterns](hhttps://otus.ru/lessons/patterns/)
+Course: [Architecture and Design Patterns](https://otus.ru/lessons/patterns/)
 
 Student: [Evgeny Shurupov](https://www.linkedin.com/in/evgeny-shurupov/)
 
