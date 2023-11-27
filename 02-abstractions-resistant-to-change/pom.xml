@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>01-unit-testing</artifactId>
+  <artifactId>02-abstractions-resistant-to-change</artifactId>
   <version>1.0</version>
 
   <properties>
@@ -83,11 +83,6 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.8</version>
-        <configuration>
-          <excludes>
-            <exclude>**/Main.*</exclude>
-          </excludes>
-        </configuration>
         <executions>
           <execution>
             <goals>
