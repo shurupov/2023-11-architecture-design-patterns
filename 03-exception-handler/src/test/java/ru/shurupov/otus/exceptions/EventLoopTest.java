@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.otus.exceptions.command.Command;
 import ru.shurupov.otus.exceptions.command.ExceptionLogCommand;
 import ru.shurupov.otus.exceptions.command.RetryCommand;
+import ru.shurupov.otus.exceptions.command.SecondRetryCommand;
 import ru.shurupov.otus.exceptions.exception.Type1Exception;
 import ru.shurupov.otus.exceptions.handler.generator.DefaultHandlerGenerator;
 
@@ -121,6 +122,42 @@ class EventLoopTest {
     eventLoop.update();
 
     verify(command, times(2)).execute();
+    verify(commands[0], times(1)).execute();
+  }
+
+  @Test
+  void givenCommand_thenStrategyRetryTwiceThenLog_thenSuccess() {
+    Queue<Command> commandQueue = new LinkedList<>();
+    commandQueue.add(command);
+
+    doThrow(new Type1Exception()).when(command).execute();
+
+    HandlerSelector handlerSelector = new HandlerSelector();
+
+    EventLoop eventLoop = new EventLoop(commandQueue, handlerSelector);
+
+    handlerSelector.addHandler(
+        Type1Exception.class,
+        command.getClass(),
+        (e, c) -> () -> commandQueue.add(new RetryCommand(c))
+    );
+
+    Command[] commands = new Command[2];
+    handlerSelector.addHandler(
+        Type1Exception.class,
+        RetryCommand.class,
+        (e, c) -> () -> commandQueue.add(new SecondRetryCommand(c))
+    );
+
+    handlerSelector.addHandler(Type1Exception.class, SecondRetryCommand.class, (e, c) -> () -> {
+      Command exceptionLogCommand = spy(new ExceptionLogCommand(e));
+      commandQueue.add(exceptionLogCommand);
+      commands[0] = exceptionLogCommand;
+    });
+
+    eventLoop.update();
+
+    verify(command, times(3)).execute();
     verify(commands[0], times(1)).execute();
   }
 
