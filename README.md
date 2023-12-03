@@ -18,4 +18,4 @@ Certificate: (will be added later)
   - [Unit testing, TDD](01-unit-testing)
 - Software development speed
   - [Abstractions resistant to change](02-abstractions-resistant-to-change)
-  - [SOLID and Exceptions](03-exception-handler.iml)
+  - [SOLID and Exceptions](03-exception-handler)
