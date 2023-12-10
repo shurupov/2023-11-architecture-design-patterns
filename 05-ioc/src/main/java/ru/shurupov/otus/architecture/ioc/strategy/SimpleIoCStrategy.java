@@ -5,15 +5,10 @@ import java.util.List;
 import java.util.Map;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocResolveHandler;
 
-public class IoCStrategySimple implements IoCStrategy {
+public class SimpleIoCStrategy extends AbstractIoCStrategy {
 
-  private final Map<String, Object> context;
-
-  private final List<IocResolveHandler> resolveHandlers;
-
-  public IoCStrategySimple(Map<String, Object> initContext, List<IocResolveHandler> resolveHandlers) {
-    this.resolveHandlers = resolveHandlers;
-    this.context = new HashMap<>(initContext);
+  public SimpleIoCStrategy(Map<String, Object> initContext, List<IocResolveHandler> resolveHandlers) {
+    super(new HashMap<>(initContext), resolveHandlers);
   }
 
   @Override
@@ -26,14 +21,19 @@ public class IoCStrategySimple implements IoCStrategy {
 
     for (IocResolveHandler resolveHandler : resolveHandlers) {
       if (resolveHandler.canHandle(result)) {
-        return (T) resolveHandler.resolve(context, result, args);
+        return (T) resolveHandler.resolve(getContext(), result, args);
       }
     }
 
     return (T) result;
   }
-  private Object get(String key) {
+  protected Object get(String key) {
     return context.get(key);
+  }
+
+  @Override
+  protected Map<String, Object> getContext() {
+    return context;
   }
 
 }

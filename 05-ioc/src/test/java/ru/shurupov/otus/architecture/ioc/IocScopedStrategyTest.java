@@ -9,13 +9,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.ioc.strategy.StrategyFactory;
 
-class IoCSimpleStrategyTest {
-
+public class IocScopedStrategyTest {
   private IoC ioc;
 
   @BeforeEach
   void setUp() {
-    ioc = new IoC(StrategyFactory.simple());
+    ioc = new IoC(StrategyFactory.scoped());
   }
 
   @Test
@@ -81,5 +80,42 @@ class IoCSimpleStrategyTest {
     assertThat(intValue2).isInstanceOf(Integer.class);
 
     assertThat(intValue1).isNotEqualTo(intValue2);
+  }
+
+  @Test
+  public void givenIoC_whenCreateScopeAndAddToItAndGet_thenGot() {
+    ioc.<Boolean>resolve("Scope.Add", "scope1");
+    ioc.<Boolean>resolve("Scope.Select", "scope1");
+    ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
+
+    String name = ioc.<String>resolve("name");
+    assertThat(name).isEqualTo("Evgeny");
+  }
+
+  @Test
+  public void givenIoC_whenCreateScopesAndAddToOneAndGetFromAnother_thenGotNull() {
+    ioc.<Boolean>resolve("Scope.Add", "scope1");
+    ioc.<Boolean>resolve("Scope.Add", "scope2");
+    ioc.<Boolean>resolve("Scope.Select", "scope1");
+    ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
+    ioc.<Boolean>resolve("Scope.Select", "scope2");
+
+    String name = ioc.<String>resolve("name");
+    assertThat(name).isNull();
+  }
+
+  @Test
+  public void givenIoC_whenCreateScopesAndAddToOneAndGetFromChild_thenGotNull() {
+    ioc.<Boolean>resolve("Scope.Add", "scope1");
+    ioc.<Boolean>resolve("Scope.Select", "scope1");
+    ioc.<Boolean>resolve("Scope.Add", "scope2");
+    ioc.<Boolean>resolve("Scope.Select", "scope2");
+    ioc.<Boolean>resolve("Scope.Add", "scope3");
+    ioc.<Boolean>resolve("Scope.Select", "scope1");
+    ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
+    ioc.<Boolean>resolve("Scope.Select", "scope3");
+
+    String name = ioc.<String>resolve("name");
+    assertThat(name).isEqualTo("Evgeny");
   }
 }
