@@ -1,6 +1,6 @@
 # Architecture and Design Patterns Course Repo
 
-![Workflow](https://github.com/shurupov/2023-11-architecture-design-patterns/actions/workflows/maven.yml/badge.svg)
+![Workflow](https://github.com/shurupov/2023-11-architecture-design-patterns/actions/workflows/maven.yml/badge.svg "Build")
 
 Course: [Architecture and Design Patterns](https://otus.ru/lessons/patterns/)
 

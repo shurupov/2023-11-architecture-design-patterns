@@ -1,10 +1,9 @@
-package ru.shurupov.otus.command.command;
+package ru.shurupov.otus.architecture.spacebattle.server.command;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.command.exception.CommandException;
+import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
 class MacroCommandTest {

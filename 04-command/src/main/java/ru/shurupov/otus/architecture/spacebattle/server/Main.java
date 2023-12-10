@@ -1,4 +1,4 @@
-package ru.shurupov.otus.command;
+package ru.shurupov.otus.architecture.spacebattle.server;
 
 public class Main {
 

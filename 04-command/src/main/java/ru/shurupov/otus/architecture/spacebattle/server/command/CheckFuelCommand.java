@@ -1,9 +1,9 @@
-package ru.shurupov.otus.command.command;
+package ru.shurupov.otus.architecture.spacebattle.server.command;
 
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.command.adapter.FuelTankAdapter;
-import ru.shurupov.otus.command.exception.CommandException;
-import ru.shurupov.otus.command.exception.NotEnoughFuelException;
+import ru.shurupov.otus.architecture.spacebattle.server.exception.NotEnoughFuelException;
+import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @RequiredArgsConstructor
 public class CheckFuelCommand implements Command {

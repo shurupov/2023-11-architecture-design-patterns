@@ -1,4 +1,4 @@
-package ru.shurupov.otus.command.adapter;
+package ru.shurupov.otus.architecture.spacebattle.server.adapter;
 
 public interface FuelTankAdapter {
 

@@ -1,7 +1,7 @@
-package ru.shurupov.otus.command.command;
+package ru.shurupov.otus.architecture.spacebattle.server.command;
 
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.command.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
 
 @RequiredArgsConstructor
 public class BurnFuelCommand implements Command {

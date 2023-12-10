@@ -1,4 +1,4 @@
-package ru.shurupov.otus.command.command;
+package ru.shurupov.otus.architecture.spacebattle.server.command;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.command.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
 
 @ExtendWith(MockitoExtension.class)
 class BurnFuelCommandTest {

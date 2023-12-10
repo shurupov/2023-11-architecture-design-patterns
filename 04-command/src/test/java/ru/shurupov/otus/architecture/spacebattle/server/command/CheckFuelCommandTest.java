@@ -1,4 +1,4 @@
-package ru.shurupov.otus.command.command;
+package ru.shurupov.otus.architecture.spacebattle.server.command;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.times;
@@ -11,9 +11,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.Test;
-import ru.shurupov.otus.command.adapter.FuelTankAdapter;
-import ru.shurupov.otus.command.exception.CommandException;
-import ru.shurupov.otus.command.exception.NotEnoughFuelException;
+import ru.shurupov.otus.architecture.spacebattle.server.exception.NotEnoughFuelException;
+import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
 class CheckFuelCommandTest {
