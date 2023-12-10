@@ -22,5 +22,3 @@ Conceptually, the game consists of three subsystems:
 
 ## Task
 Implement the movement of objects on the playing field within the Game Server subsystem.
-
-To build project to jar and execute tests use command `../mvnw package`

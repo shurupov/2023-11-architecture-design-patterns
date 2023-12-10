@@ -10,7 +10,9 @@ Certificate: (will be added later)
 
 <details>
     <summary>Keywords: </summary>
-    `SOLID`, `Command`, `Exception`, `TDD`, `Unit testing`, `Abstraction`
+
+  `SOLID`, `Command`, `Exception`, `TDD`, `Unit testing`, `Abstraction`,
+  `Adapter`, `Command`, `Macrocommand`
 </details>
 
 ## Modules/Homeworks
@@ -19,3 +21,4 @@ Certificate: (will be added later)
 - Software development speed
   - [Abstractions resistant to change](02-abstractions-resistant-to-change)
   - [SOLID and Exceptions](03-exception-handler)
+  - [Command and Macrocommand](04-command)
