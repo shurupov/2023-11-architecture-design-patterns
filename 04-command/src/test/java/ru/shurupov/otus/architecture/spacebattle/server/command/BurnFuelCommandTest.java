@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.activity.FuelTank;
 
 @ExtendWith(MockitoExtension.class)
 class BurnFuelCommandTest {
@@ -18,19 +18,19 @@ class BurnFuelCommandTest {
   private BurnFuelCommand burnFuelCommand;
 
   @Mock
-  private FuelTankAdapter fuelTankAdapter;
+  private FuelTank fuelTank;
 
   @BeforeEach
   public void init() {
-    burnFuelCommand = new BurnFuelCommand(fuelTankAdapter);
+    burnFuelCommand = new BurnFuelCommand(fuelTank);
   }
 
   @Test
   public void givenFuelTank_whenExecute_thenFuelVolumeReduced() {
-    when(fuelTankAdapter.getFuelPortion()).thenReturn(5);
+    when(fuelTank.getFuelPortion()).thenReturn(5);
 
     burnFuelCommand.execute();
 
-    verify(fuelTankAdapter, times(1)).burnFuel(eq(5));
+    verify(fuelTank, times(1)).burnFuel(eq(5));
   }
 }

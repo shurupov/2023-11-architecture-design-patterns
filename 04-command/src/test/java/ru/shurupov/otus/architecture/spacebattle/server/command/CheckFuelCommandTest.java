@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.spacebattle.server.exception.NotEnoughFuelException;
-import ru.shurupov.otus.architecture.spacebattle.server.adapter.FuelTankAdapter;
+import ru.shurupov.otus.architecture.spacebattle.server.activity.FuelTank;
 import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,28 +21,28 @@ class CheckFuelCommandTest {
   private CheckFuelCommand checkFuelCommand;
 
   @Mock
-  private FuelTankAdapter fuelTankAdapter;
+  private FuelTank fuelTank;
 
   @BeforeEach
   public void init() {
-    checkFuelCommand = new CheckFuelCommand(fuelTankAdapter);
+    checkFuelCommand = new CheckFuelCommand(fuelTank);
   }
 
   @Test
   void givenLittleFuelTank_whenExecute_thenThrowException() {
-    when(fuelTankAdapter.getFuelAmount()).thenReturn(5);
-    when(fuelTankAdapter.getFuelPortion()).thenReturn(6);
+    when(fuelTank.getFuelAmount()).thenReturn(5);
+    when(fuelTank.getFuelPortion()).thenReturn(6);
     assertThatThrownBy(() -> checkFuelCommand.execute()).isInstanceOf(NotEnoughFuelException.class);
-    verify(fuelTankAdapter, times(1)).getFuelAmount();
-    verify(fuelTankAdapter, times(1)).getFuelPortion();
+    verify(fuelTank, times(1)).getFuelAmount();
+    verify(fuelTank, times(1)).getFuelPortion();
   }
 
   @Test
   void givenEnoughFuelTank_whenExecute_thenNothingHappened() throws CommandException {
-    when(fuelTankAdapter.getFuelAmount()).thenReturn(10);
-    when(fuelTankAdapter.getFuelPortion()).thenReturn(6);
+    when(fuelTank.getFuelAmount()).thenReturn(10);
+    when(fuelTank.getFuelPortion()).thenReturn(6);
     checkFuelCommand.execute();
-    verify(fuelTankAdapter, times(1)).getFuelAmount();
-    verify(fuelTankAdapter, times(1)).getFuelPortion();
+    verify(fuelTank, times(1)).getFuelAmount();
+    verify(fuelTank, times(1)).getFuelPortion();
   }
 }

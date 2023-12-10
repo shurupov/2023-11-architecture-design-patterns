@@ -1,11 +1,10 @@
 package ru.shurupov.otus.architecture.spacebattle.server.command;
 
-import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
+import java.util.List;
 
-public class MoveMacroCommand implements Command {
+public class MoveMacroCommand extends MacroCommand {
 
-  @Override
-  public void execute() throws CommandException {
-
+  public MoveMacroCommand(Command checkFuelCommand, Command burnFuelCommand, MoveCommand moveCommand) {
+    super(List.of(checkFuelCommand, burnFuelCommand, moveCommand));
   }
 }
