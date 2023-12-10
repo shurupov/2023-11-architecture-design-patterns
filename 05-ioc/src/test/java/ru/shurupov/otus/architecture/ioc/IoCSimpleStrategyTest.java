@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.ioc.strategy.IoCStrategySimple;
+import ru.shurupov.otus.architecture.ioc.strategy.StrategyFactory;
 
 @ExtendWith(MockitoExtension.class)
 class IoCSimpleStrategyTest {
@@ -18,11 +18,11 @@ class IoCSimpleStrategyTest {
 
   @BeforeEach
   void setUp() {
-    ioc = new IoC(new IoCStrategySimple());
+    ioc = new IoC(StrategyFactory.simple());
   }
 
   @Test
-  public void givenIoC_whenResolveRegisterResolveSumFunction_thenRegisteredAndSumCalculated() {
+  public void givenIoC_whenResolveRegisterResolveSumFunction_thenRegisteredAndSumCalculatedUsingParams() {
 
     Function<Object[], Double> sum = (Object[] args) -> {
       double result = 0d;
@@ -65,7 +65,7 @@ class IoCSimpleStrategyTest {
   }
 
   @Test
-  public void givenIoC_whenRegisterAndExecute_thenRegisteredAndExecuted() {
+  public void givenIoC_whenRegisterAndExecuteWithoutParams_thenRegisteredAndExecutedWithoutParams() {
 
     Random random = new Random();
 

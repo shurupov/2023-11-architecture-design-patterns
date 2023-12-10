@@ -3,28 +3,17 @@ package ru.shurupov.otus.architecture.ioc.strategy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import ru.shurupov.otus.architecture.ioc.context.IocRegister;
-import ru.shurupov.otus.architecture.ioc.handler.resolve.IocContextProcessorHandler;
-import ru.shurupov.otus.architecture.ioc.handler.resolve.IocFunctionResolver;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocResolveHandler;
-import ru.shurupov.otus.architecture.ioc.handler.resolve.IocSupplierResolver;
 
 public class IoCStrategySimple implements IoCStrategy {
 
-  private Map<String, Object> context;
+  private final Map<String, Object> context;
 
-  private List<IocResolveHandler> resolveHandlers;
+  private final List<IocResolveHandler> resolveHandlers;
 
-  public IoCStrategySimple() {
-    //TODO Вытащить
-    resolveHandlers = List.of(
-        new IocContextProcessorHandler(),
-        new IocFunctionResolver<>(),
-        new IocSupplierResolver<>()
-    );
-
-    context = new HashMap<>();
-    context.put("IoC.Register", new IocRegister());
+  public IoCStrategySimple(Map<String, Object> initContext, List<IocResolveHandler> resolveHandlers) {
+    this.resolveHandlers = resolveHandlers;
+    this.context = new HashMap<>(initContext);
   }
 
   @Override
@@ -37,7 +26,7 @@ public class IoCStrategySimple implements IoCStrategy {
 
     for (IocResolveHandler resolveHandler : resolveHandlers) {
       if (resolveHandler.canHandle(result)) {
-        return (T) resolveHandler.<T>resolve(context, result, args);
+        return (T) resolveHandler.resolve(context, result, args);
       }
     }
 
