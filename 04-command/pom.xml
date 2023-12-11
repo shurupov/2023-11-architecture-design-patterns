@@ -9,8 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>03-exception-handler</artifactId>
-  <version>1.0</version>
+  <artifactId>04-command</artifactId>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>

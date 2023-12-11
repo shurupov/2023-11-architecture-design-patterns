@@ -13,7 +13,3 @@ Let's assume that all the commands are in some queue. Queue processing consists 
 - Implement an exception handler that queues the repeater Command of the command that threw the exception.
 - Implement the following exception handling - repeat the command when the exception is thrown for the first time, and write the information to the log when the exception is thrown again.
 - Implement an exception handling strategy - repeat twice, then write to the log
-
-## Task
-
-To build project to jar and execute tests use command `../mvnw package`
