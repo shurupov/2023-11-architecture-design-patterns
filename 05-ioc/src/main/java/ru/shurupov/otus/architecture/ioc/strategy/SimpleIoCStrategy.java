@@ -11,22 +11,6 @@ public class SimpleIoCStrategy extends AbstractIoCStrategy {
     super(new HashMap<>(initContext), resolveHandlers);
   }
 
-  @Override
-  public <T> T resolve(String key, Object... args) {
-    Object result = get(key);
-
-    if (result == null) {
-      return null;
-    }
-
-    for (IocResolveHandler resolveHandler : resolveHandlers) {
-      if (resolveHandler.canHandle(result)) {
-        return (T) resolveHandler.resolve(getContext(), result, args);
-      }
-    }
-
-    return (T) result;
-  }
   protected Object get(String key) {
     return context.get(key);
   }
