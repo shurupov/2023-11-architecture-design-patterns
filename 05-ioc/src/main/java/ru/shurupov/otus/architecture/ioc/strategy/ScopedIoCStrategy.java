@@ -21,7 +21,7 @@ public class ScopedIoCStrategy extends AbstractIoCStrategy {
     rootScope.put(SCOPE_NAME_KEY, ROOT_SCOPE_NAME);
     rootScope.put(META_KEY, context);
     context.put(ROOT_SCOPE_NAME, rootScope);
-    context.put(CURRENT_SCOPE_KEY, ROOT_SCOPE_NAME);
+    context.put(CURRENT_SCOPE_KEY, ThreadLocal.withInitial(() -> ROOT_SCOPE_NAME));
     List<String> scopeNames = new ArrayList<>();
     scopeNames.add(ROOT_SCOPE_NAME);
     context.put(SCOPE_NAMES_KEY, scopeNames);
@@ -29,7 +29,7 @@ public class ScopedIoCStrategy extends AbstractIoCStrategy {
 
   protected Object get(String key) {
     Object value;
-    Map<String, Object> scope = (Map<String, Object>) context.get(context.get(CURRENT_SCOPE_KEY));
+    Map<String, Object> scope = (Map<String, Object>) context.get(getCurrentScope());
     while (scope != null) {
       value = scope.get(key);
       if (value != null) {
@@ -42,6 +42,10 @@ public class ScopedIoCStrategy extends AbstractIoCStrategy {
 
   @Override
   protected Map<String, Object> getContext() {
-    return (Map<String, Object>) context.get(context.get(CURRENT_SCOPE_KEY));
+    return (Map<String, Object>) context.get(getCurrentScope());
+  }
+
+  private String getCurrentScope() {
+    return ((ThreadLocal<String>) context.get(CURRENT_SCOPE_KEY)).get();
   }
 }
