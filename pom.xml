@@ -15,6 +15,7 @@
         <module>02-abstractions-resistant-to-change</module>
         <module>03-exception-handler</module>
         <module>04-command</module>
+        <module>05-ioc</module>
     </modules>
 
 
