@@ -1,16 +1,12 @@
 package ru.shurupov.otus.architecture.generator;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.activity.actor.Movable;
 import ru.shurupov.otus.architecture.generator.ClassStructure.FieldTemplate;
 import ru.shurupov.otus.architecture.ioc.strategy.IoCFactory;
 
-@Disabled
 class AdapterGeneratorTest {
 
   AdapterGenerator adapterGenerator = new AdapterGenerator(
@@ -40,8 +36,7 @@ class AdapterGeneratorTest {
   );
 
   @Test
-  void generate()
-      throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+  void generate() throws Exception {
     Movable movable = adapterGenerator.generate(Movable.class, IoCFactory.simple(), new HashMap<>());
   }
 }

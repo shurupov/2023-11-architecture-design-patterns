@@ -24,7 +24,7 @@ public class ClassStructureCollector {
   public <I> ClassStructure collect(Class<I> i) {
     ClassStructure structure = new ClassStructure();
 
-    structure.setClassName(i.getSimpleName() + "$" + RandomStringUtils.randomAlphanumeric(5));
+    structure.setClassName(i.getSimpleName() + RandomStringUtils.randomAlphanumeric(5));
     structure.setPackageName(i.getPackageName() + ".generated");
     structure.setInterfaceName(i.getSimpleName());
 
@@ -44,8 +44,6 @@ public class ClassStructureCollector {
       structure.getImports().add(fieldTemplate.getCanonicalType());
       structure.getFields().add(new Field(fieldTemplate.getType(), fieldTemplate.getName()));
     }
-
-    collectConstructor(structure);
   }
 
   private <I> void collectMethods(Class<I> i, ClassStructure structure) {

@@ -13,10 +13,15 @@ public class AdapterGenerator {
   private final JavaCodeClassGenerator codeGenerator;
   private final JavaCodeClassCompiler codeCompiler;
 
-  public <I> I generate(Class<I> i, IoC ioc, Map<String, Object> objectMap)
-      throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+  public <I> I generate(Class<I> i, IoC ioc, Map<String, Object> objectMap) throws Exception {
     ClassStructure structure = collector.collect(i);
     String javaCode = codeGenerator.generateJava(structure);
-    return codeCompiler.compile(javaCode, i, ioc, objectMap);
+    return codeCompiler.compile(
+        javaCode,
+        structure.getPackageName() + "." + structure.getClassName(),
+        i,
+        ioc,
+        objectMap
+    );
   }
 }
