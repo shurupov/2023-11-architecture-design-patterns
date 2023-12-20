@@ -101,7 +101,7 @@ class RotatableMapAdapterTest {
         )
     );
 
-    assertThat(rotatable.getDirectionAngularVelocity().getDeltaAngleRad())
+    assertThat(rotatable.getVelocity().getDeltaAngleRad())
         .usingComparator(DOUBLE_COMPARATOR)
         .isEqualTo(2 * Math.PI / 32);
   }
@@ -110,7 +110,7 @@ class RotatableMapAdapterTest {
   void givenRotatableMapAdapterWithoutSetAngularVelocity_whenInvokeGetDirection_thenExceptionThrown() {
     Rotatable rotatable = new RotatableMapAdapter(ioc, Map.of());
 
-    assertThatThrownBy(rotatable::getDirectionAngularVelocity)
+    assertThatThrownBy(rotatable::getVelocity)
         .isInstanceOf(UnableToGetAngularVelocityException.class);
   }
 

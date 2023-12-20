@@ -5,6 +5,6 @@ import ru.shurupov.otus.architecture.activity.entity.AngularVelocity;
 
 public interface Rotatable {
   Angle getDirection();
-  AngularVelocity getDirectionAngularVelocity();
+  AngularVelocity getVelocity();
   void rotate(AngularVelocity deltaAngle);
 }

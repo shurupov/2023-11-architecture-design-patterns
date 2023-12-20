@@ -19,7 +19,7 @@ public class RotatableMapAdapter implements Rotatable {
   }
 
   @Override
-  public AngularVelocity getDirectionAngularVelocity() {
+  public AngularVelocity getVelocity() {
     return ioc.resolve("Rotatable.Velocity.Get", rotatableObject);
   }
 

@@ -5,9 +5,6 @@ import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.activity.actor.Movable;
 import ru.shurupov.otus.architecture.activity.entity.Position;
 import ru.shurupov.otus.architecture.activity.entity.Velocity;
-import ru.shurupov.otus.architecture.activity.exception.UnableToGetPositionException;
-import ru.shurupov.otus.architecture.activity.exception.UnableToGetVelocityException;
-import ru.shurupov.otus.architecture.activity.exception.UnableToMoveException;
 import ru.shurupov.otus.architecture.ioc.IoC;
 
 @RequiredArgsConstructor
