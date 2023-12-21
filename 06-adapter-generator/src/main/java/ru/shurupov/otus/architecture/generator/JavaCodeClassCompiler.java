@@ -3,6 +3,7 @@ package ru.shurupov.otus.architecture.generator;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import org.mdkt.compiler.InMemoryJavaCompiler;
+import ru.shurupov.otus.architecture.generator.exception.ConstructorNotFoundException;
 
 public class JavaCodeClassCompiler {
   public Class<?> compile(String javaCode, String className) throws Exception {
