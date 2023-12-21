@@ -72,13 +72,15 @@ public class ClassStructureCollector {
   private String generateMethodBody(MethodStructure method, String interfaceName) {
 
     String entity = null;
-    String action = method.getName();
+    String action;
 
-    Matcher matcher = methodActionPattern.matcher(action);
+    Matcher matcher = methodActionPattern.matcher(method.getName());
 
     if (matcher.matches()) {
       entity = matcher.group(2);
       action = StringUtils.capitalize(matcher.group(1));
+    } else {
+      action = StringUtils.capitalize(method.getName());
     }
 
     return methodBodyGenerator.generate(
