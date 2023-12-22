@@ -25,7 +25,7 @@ class AdapterGeneratorGenerateMovableIntegrationTest {
   public void init() {
     ioc = IoCFactory.simple();
 
-    ioc.resolve("IoC.Register", "fromMapAdapterStructureCollector",
+    ioc.resolve("IoC.Register", "Generator.Collector",
         new ClassStructureCollector(
             List.of(
                 FieldTemplate.builder()
@@ -49,18 +49,18 @@ class AdapterGeneratorGenerateMovableIntegrationTest {
         )
     );
 
-    ioc.resolve("IoC.Register", "fromMapAdapterGenerator",
+    ioc.resolve("IoC.Register", "Generator",
         new AdapterGenerator(
-            ioc.resolve("fromMapAdapterStructureCollector"),
+            ioc.resolve("Generator.Collector"),
             new JavaCodeClassGenerator(),
             new JavaCodeClassCompiler()
         )
     );
 
-    ioc.resolve("IoC.Register", "createMovable", (Function<Object[], Movable>) (args) -> {
-      AdapterGenerator adapterGenerator = ioc.resolve("fromMapAdapterGenerator");
+    ioc.resolve("IoC.Register", "Adapter.Create", (Function<Object[], ?>) (args) -> {
+      AdapterGenerator adapterGenerator = ioc.resolve("Generator");
       try {
-        return adapterGenerator.generate(Movable.class, ioc, args[0]);
+        return adapterGenerator.generate((Class<?>) args[0], ioc, args[1]);
       } catch (Exception e) {
         throw new UnableToGenerateInstanceException(e);
       }
@@ -97,7 +97,7 @@ class AdapterGeneratorGenerateMovableIntegrationTest {
 
     Object object = ioc.resolve("spaceship");
 
-    Movable spaceShipMovableAdapter = ioc.resolve("createMovable", object);
+    Movable spaceShipMovableAdapter = ioc.resolve("Adapter.Create", Movable.class, object);
 
     Position position = spaceShipMovableAdapter.getPosition();
 
@@ -114,7 +114,7 @@ class AdapterGeneratorGenerateMovableIntegrationTest {
 
     Object object = ioc.resolve("spaceship");
 
-    Movable spaceShipMovableAdapter = ioc.resolve("createMovable", object);
+    Movable spaceShipMovableAdapter = ioc.resolve("Adapter.Create", Movable.class, object);
 
     Velocity velocity = spaceShipMovableAdapter.getVelocity();
 
@@ -131,7 +131,7 @@ class AdapterGeneratorGenerateMovableIntegrationTest {
 
     Object object = ioc.resolve("spaceship");
 
-    Movable spaceShipMovableAdapter = ioc.resolve("createMovable", object);
+    Movable spaceShipMovableAdapter = ioc.resolve("Adapter.Create", Movable.class, object);
 
     spaceShipMovableAdapter.move(spaceShipMovableAdapter.getVelocity());
 

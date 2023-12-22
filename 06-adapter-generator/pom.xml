@@ -106,6 +106,12 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <excludes>
+            <exclude>**/generator/ClassStructure.class</exclude>
+            <exclude>**/generator/ClassStructure$*.class</exclude>
+          </excludes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
