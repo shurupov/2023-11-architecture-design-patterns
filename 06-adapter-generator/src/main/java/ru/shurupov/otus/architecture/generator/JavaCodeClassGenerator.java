@@ -40,7 +40,7 @@ public class JavaCodeClassGenerator {
 
   public void insertFields(ClassStructure structure, StringBuilder sb) {
     for (Field field : structure.getFields()) {
-      sb.append("  private static ")
+      sb.append("  private final ")
           .append(field.getType())
           .append(" ")
           .append(field.getName())
