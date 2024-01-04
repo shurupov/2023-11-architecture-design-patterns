@@ -1,6 +1,5 @@
 package ru.shurupov.otus.architecture.concurrent.executor;
 
-import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +16,16 @@ public class EventLoopAction implements Command {
 
   @Override
   public void execute() {
-    Command command = null;
+    Command command;
     try {
       command = commandQueue.take();
+      try {
+        command.execute();
+      } catch (CommandException e) {
+        handlerSelector.getHandler(e, command).execute();
+      }
     } catch (InterruptedException e) {
       log.warn(e.getMessage(), e);
-    }
-    try {
-      command.execute();
-    } catch (CommandException e) {
-      handlerSelector.getHandler(e, command).execute();
     }
   }
 }

@@ -1,18 +1,15 @@
 package ru.shurupov.otus.architecture.concurrent.executor;
 
 import java.util.concurrent.BlockingQueue;
-import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.concurrent.HandlerSelector;
 import ru.shurupov.otus.architecture.concurrent.command.Command;
 
-@RequiredArgsConstructor
-public class EventLoopThread {
+public class EventLoopStarter {
   private final Thread thread;
   private final EventLoop eventLoop;
-  private final Command action;
 
-  public EventLoopThread(BlockingQueue<Command> queue, HandlerSelector handlerSelector) {
-    this.action = new EventLoopAction(queue, handlerSelector);
+  public EventLoopStarter(BlockingQueue<Command> queue, HandlerSelector handlerSelector) {
+    Command action = new EventLoopAction(queue, handlerSelector);
     this.eventLoop = new EventLoop(action);
     thread = new Thread(eventLoop);
   }

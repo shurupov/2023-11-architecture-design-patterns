@@ -1,15 +1,15 @@
 package ru.shurupov.otus.architecture.concurrent.command;
 
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.architecture.concurrent.executor.EventLoopThread;
+import ru.shurupov.otus.architecture.concurrent.executor.EventLoopStarter;
 
 @RequiredArgsConstructor
 public class HardStopCommand implements Command {
 
-  private final EventLoopThread eventLoopThread;
+  private final EventLoopStarter eventLoopStarter;
 
   @Override
   public void execute() {
-    eventLoopThread.stop();
+    eventLoopStarter.stop();
   }
 }

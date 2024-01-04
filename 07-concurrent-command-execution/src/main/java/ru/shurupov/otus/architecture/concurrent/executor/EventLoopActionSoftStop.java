@@ -6,19 +6,19 @@ import ru.shurupov.otus.architecture.concurrent.command.Command;
 
 public class EventLoopActionSoftStop extends EventLoopAction {
 
-  private final EventLoopThread eventLoopThread;
+  private final EventLoopStarter eventLoopStarter;
 
   public EventLoopActionSoftStop(
       BlockingQueue<Command> commandQueue,
-      HandlerSelector handlerSelector, EventLoopThread eventLoopThread) {
+      HandlerSelector handlerSelector, EventLoopStarter eventLoopStarter) {
     super(commandQueue, handlerSelector);
-    this.eventLoopThread = eventLoopThread;
+    this.eventLoopStarter = eventLoopStarter;
   }
 
   @Override
   public void execute() {
     if (commandQueue.isEmpty()) {
-      eventLoopThread.stop();
+      eventLoopStarter.stop();
     } else {
       super.execute();
     }
