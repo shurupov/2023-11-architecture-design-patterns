@@ -1,5 +1,6 @@
 package ru.shurupov.otus.architecture.concurrent.command;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.Mockito.times;
@@ -19,7 +20,7 @@ import ru.shurupov.otus.architecture.concurrent.executor.EventLoop;
 import ru.shurupov.otus.architecture.concurrent.executor.EventLoopStarter;
 
 @ExtendWith(MockitoExtension.class)
-class StartCommandTest {
+class SoftStopCommandTest {
 
   @Mock
   private Command command1;
@@ -37,17 +38,22 @@ class StartCommandTest {
   public void init() throws InterruptedException {
 
     queue = new LinkedBlockingQueue<>();
+    HandlerSelector handlerSelector = new HandlerSelector();
+
+    eventLoopStarter = new EventLoopStarter(queue, handlerSelector);
+    startCommand = new StartCommand(eventLoopStarter);
+    SoftStopCommand softStopCommand = new SoftStopCommand(queue, handlerSelector, eventLoopStarter);
+
     queue.put(command1);
     queue.put(command2);
+    queue.put(softStopCommand);
     queue.put(command3);
-
-    eventLoopStarter = new EventLoopStarter(queue, new HandlerSelector());
-    startCommand = new StartCommand(eventLoopStarter);
   }
 
   @Test
-  void givenEventLoopStarter_whenExecute_thenCommandsFromQueueExecutedAndQueueIsEmpty()
+  void givenEventLoopStarterWithSoftStopCommandInQueue_whenHardSoftExecuted_thenQueueEndedAndLoopStoppedWithEmptyQueue()
       throws IllegalAccessException {
+
     startCommand.execute();
 
     await()
@@ -57,6 +63,7 @@ class StartCommandTest {
     verify(command2, times(1)).execute();
     verify(command3, times(1)).execute();
 
+
     assertThat(queue).isEmpty();
 
     Field eventLoopField = FieldUtils.getField(EventLoopStarter.class, "eventLoop", true);
@@ -64,6 +71,7 @@ class StartCommandTest {
     Field stopField = FieldUtils.getField(EventLoop.class, "stop", true);
     boolean stop = stopField.getBoolean(eventLoop);
 
-    assertThat(stop).isFalse();
+    assertThat(stop).isTrue();
+
   }
 }
