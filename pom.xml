@@ -16,6 +16,7 @@
         <module>03-exception-handler</module>
         <module>04-command</module>
         <module>05-ioc</module>
+        <module>06-adapter-generator</module>
     </modules>
 
 

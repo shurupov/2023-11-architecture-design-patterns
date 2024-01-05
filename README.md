@@ -12,8 +12,8 @@ Certificate: (will be added later)
     <summary>Keywords: </summary>
 
   `SOLID`, `Command`, `Exception`, `TDD`, `Unit testing`, `Abstraction`,
-  `Adapter`, `Command`, `Macrocommand`, `Inversion of Controle`, `Factory`,
-  `Abstract Factory`
+  `Adapter`, `Command`, `Macrocommand`, `Inversion of Control`, `Factory`,
+  `Abstract Factory`, `Adapter`, `Runtime Compilation`
 </details>
 
 ## Modules/Homeworks
@@ -24,3 +24,4 @@ Certificate: (will be added later)
   - [SOLID and Exceptions](03-exception-handler)
   - [Command and Macrocommand](04-command)
   - [Inversion of Control (IoC)](05-ioc)
+  - [Generated Adapter](06-adapter-generator)
