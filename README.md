@@ -13,7 +13,8 @@ Certificate: (will be added later)
 
   `SOLID`, `Command`, `Exception`, `TDD`, `Unit testing`, `Abstraction`,
   `Adapter`, `Command`, `Macrocommand`, `Inversion of Control`, `Factory`,
-  `Abstract Factory`, `Adapter`, `Runtime Compilation`
+  `Abstract Factory`, `Adapter`, `Runtime Compilation`, 
+  `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`
 </details>
 
 ## Modules/Homeworks
@@ -25,3 +26,4 @@ Certificate: (will be added later)
   - [Command and Macrocommand](04-command)
   - [Inversion of Control (IoC)](05-ioc)
   - [Generated Adapter](06-adapter-generator)
+  - [Multithreaded command execution](07-concurrent-command-execution)
