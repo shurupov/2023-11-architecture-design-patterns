@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.mq.service;
+package ru.shurupov.otus.architecture.mq.client.service;
 
 import java.nio.charset.StandardCharsets;
 import lombok.RequiredArgsConstructor;
