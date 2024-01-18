@@ -17,6 +17,7 @@
   <modules>
     <module>08-mq-server</module>
     <module>08-mq-agent</module>
+    <module>08-mq-model</module>
   </modules>
 
 </project>
