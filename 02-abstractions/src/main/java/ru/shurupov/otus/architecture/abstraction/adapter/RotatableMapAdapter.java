@@ -28,7 +28,7 @@ public class RotatableMapAdapter implements Rotatable {
   }
 
   @Override
-  public AngularVelocity getDirectionAngularVelocity() {
+  public AngularVelocity getVelocity() {
     /* Checking whether object and property angular velocity */
     if (rotatableObject != null && rotatableObject.containsKey(DELTA_ANGLE_PROPERTY_NAME)) {
       return () -> (Double) rotatableObject.get(DELTA_ANGLE_PROPERTY_NAME);
