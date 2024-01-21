@@ -1,4 +1,6 @@
 package ru.shurupov.otus.architecture.generator.exception;
 
-public class ConstructorNotFoundException extends RuntimeException {
+import ru.shurupov.otus.architecture.exception.CommandException;
+
+public class ConstructorNotFoundException extends CommandException {
 }
