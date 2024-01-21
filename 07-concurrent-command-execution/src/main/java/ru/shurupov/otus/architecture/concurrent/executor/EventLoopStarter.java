@@ -1,8 +1,8 @@
 package ru.shurupov.otus.architecture.concurrent.executor;
 
 import java.util.concurrent.BlockingQueue;
-import ru.shurupov.otus.architecture.concurrent.HandlerSelector;
-import ru.shurupov.otus.architecture.concurrent.command.Command;
+import ru.shurupov.otus.architecture.command.Command;
+import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 public class EventLoopStarter {
   private final Thread thread;

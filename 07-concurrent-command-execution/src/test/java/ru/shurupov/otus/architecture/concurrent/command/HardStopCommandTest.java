@@ -13,12 +13,12 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.concurrent.HandlerSelector;
+import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.concurrent.executor.EventLoop;
 import ru.shurupov.otus.architecture.concurrent.executor.EventLoopStarter;
+import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 @ExtendWith(MockitoExtension.class)
 class HardStopCommandTest {

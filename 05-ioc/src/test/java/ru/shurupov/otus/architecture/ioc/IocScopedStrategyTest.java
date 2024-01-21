@@ -7,14 +7,13 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.shurupov.otus.architecture.ioc.strategy.StrategyFactory;
 
 public class IocScopedStrategyTest {
   private IoC ioc;
 
   @BeforeEach
   void setUp() {
-    ioc = new IoC(StrategyFactory.scoped());
+    ioc = IoCFactory.scoped();
   }
 
   @Test
@@ -55,7 +54,7 @@ public class IocScopedStrategyTest {
         .isNotNull()
         .isTrue();
 
-    String name = ioc.<String>resolve("name");
+    String name = ioc.resolve("name");
 
     assertThat(name).isEqualTo("Evgeny");
   }
@@ -88,7 +87,7 @@ public class IocScopedStrategyTest {
     ioc.<Boolean>resolve("Scope.Select", "scope1");
     ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
 
-    String name = ioc.<String>resolve("name");
+    String name = ioc.resolve("name");
     assertThat(name).isEqualTo("Evgeny");
   }
 
@@ -100,7 +99,7 @@ public class IocScopedStrategyTest {
     ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
     ioc.<Boolean>resolve("Scope.Select", "scope2");
 
-    String name = ioc.<String>resolve("name");
+    String name = ioc.resolve("name");
     assertThat(name).isNull();
   }
 
@@ -115,7 +114,7 @@ public class IocScopedStrategyTest {
     ioc.<Boolean>resolve("IoC.Register", "name", "Evgeny");
     ioc.<Boolean>resolve("Scope.Select", "scope3");
 
-    String name = ioc.<String>resolve("name");
+    String name = ioc.resolve("name");
     assertThat(name).isEqualTo("Evgeny");
   }
 }

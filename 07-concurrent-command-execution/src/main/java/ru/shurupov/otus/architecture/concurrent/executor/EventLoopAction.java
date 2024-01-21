@@ -3,9 +3,9 @@ package ru.shurupov.otus.architecture.concurrent.executor;
 import java.util.concurrent.BlockingQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ru.shurupov.otus.architecture.concurrent.HandlerSelector;
-import ru.shurupov.otus.architecture.concurrent.command.Command;
-import ru.shurupov.otus.architecture.concurrent.exception.CommandException;
+import ru.shurupov.otus.architecture.command.Command;
+import ru.shurupov.otus.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 @Slf4j
 @RequiredArgsConstructor
