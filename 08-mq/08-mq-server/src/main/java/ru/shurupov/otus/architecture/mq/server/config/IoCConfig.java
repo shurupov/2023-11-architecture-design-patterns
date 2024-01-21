@@ -16,6 +16,7 @@ import ru.shurupov.otus.architecture.command.MoveCommand;
 import ru.shurupov.otus.architecture.concurrent.command.StartCommand;
 import ru.shurupov.otus.architecture.concurrent.executor.EventLoopStarter;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
+import ru.shurupov.otus.architecture.exception.MoveCommandException;
 import ru.shurupov.otus.architecture.generator.AdapterGenerator;
 import ru.shurupov.otus.architecture.generator.ClassStructure.FieldTemplate;
 import ru.shurupov.otus.architecture.generator.ClassStructureCollector;
@@ -36,21 +37,40 @@ public class IoCConfig {
     addObjectImplementationGenerator(ioc);
     addAdapterCreator(ioc);
     addMovableMethodsGenerator(ioc);
-    addSpaceShip(ioc, "Object.Spaceship1", 100, 100, 10, 10);
-    addSpaceShip(ioc, "Object.Spaceship2", 150, 150, 5, 5);
     addMoveCommandCreator(ioc);
+    addAndSetScope(ioc, "MainGame");
+    addSpaceShip(ioc, "Object.Spaceship1", 100, 99, 10, 9);
+    addSpaceShip(ioc, "Object.Spaceship2", 150, 149, 5, 5);
     createAndStartEventLoop(ioc);
+    addMoveExceptionHandler(ioc);
 
     return ioc;
   }
 
+  private void addMoveExceptionHandler(IoC ioc) {
+    ioc.resolve("IoC.Register", "Counter.MoveException", 0);
+    HandlerSelector selector = ioc.resolve("Event.Loop.ExceptionSelector");
+    selector.addHandler(MoveCommandException.class, MoveCommand.class, (e, c) -> () -> {
+      Integer counter = ioc.resolve("Counter.MoveException");
+      counter++;
+      ioc.resolve("IoC.Register", "Counter.MoveException", counter);
+    });
+  }
+
+  private void addAndSetScope(IoC ioc, String scopeName) {
+    ioc.resolve("Scope.Add", scopeName);
+    ioc.resolve("Scope.Select", scopeName);
+  }
+
   private void createAndStartEventLoop(IoC ioc) {
     BlockingQueue<Command> queue = new LinkedBlockingQueue<>();
-    EventLoopStarter eventLoopStarter = new EventLoopStarter(queue, new HandlerSelector());
+    HandlerSelector handlerSelector = new HandlerSelector();
+    EventLoopStarter eventLoopStarter = new EventLoopStarter(queue, handlerSelector);
     Command startCommand = new StartCommand(eventLoopStarter);
     startCommand.execute();
 
     ioc.resolve("IoC.Register", "Event.Loop.Queue", queue);
+    ioc.resolve("IoC.Register", "Event.Loop.ExceptionSelector", handlerSelector);
     ioc.resolve("IoC.Register", "Event.Loop.Starter", eventLoopStarter);
   }
 

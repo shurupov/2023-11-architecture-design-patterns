@@ -15,7 +15,7 @@ public class MqListener {
   private final MessageService messageService;
 
   @RabbitListener(queues = "game")
-  public void processGameQueue(GameMessage message) {
+  public void processGameQueue(GameMessage message) throws InterruptedException {
     log.info("Received message: {}", message);
     messageService.processMessage(message);
   }
