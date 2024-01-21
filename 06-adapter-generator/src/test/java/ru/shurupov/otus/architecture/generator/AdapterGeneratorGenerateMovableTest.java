@@ -15,12 +15,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.activity.actor.Movable;
-import ru.shurupov.otus.architecture.activity.entity.Position;
-import ru.shurupov.otus.architecture.activity.entity.Velocity;
-import ru.shurupov.otus.architecture.activity.exception.UnableToGetPositionException;
-import ru.shurupov.otus.architecture.activity.exception.UnableToGetVelocityException;
-import ru.shurupov.otus.architecture.activity.exception.UnableToMoveException;
+import ru.shurupov.otus.architecture.abstraction.activity.Movable;
+import ru.shurupov.otus.architecture.abstraction.entity.Position;
+import ru.shurupov.otus.architecture.abstraction.entity.Velocity;
+import ru.shurupov.otus.architecture.abstraction.exception.UnableToGetPositionException;
+import ru.shurupov.otus.architecture.abstraction.exception.UnableToGetVelocityException;
+import ru.shurupov.otus.architecture.abstraction.exception.UnableToMoveException;
 import ru.shurupov.otus.architecture.generator.ClassStructure.FieldTemplate;
 import ru.shurupov.otus.architecture.ioc.IoC;
 

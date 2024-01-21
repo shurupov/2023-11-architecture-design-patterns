@@ -1,6 +1,7 @@
 package ru.shurupov.otus.architecture.concurrent.command;
 
 import lombok.RequiredArgsConstructor;
+import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.concurrent.executor.EventLoopStarter;
 
 @RequiredArgsConstructor

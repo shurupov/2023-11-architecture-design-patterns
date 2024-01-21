@@ -1,6 +1,6 @@
 package ru.shurupov.otus.architecture.concurrent.executor;
 
-import ru.shurupov.otus.architecture.concurrent.command.Command;
+import ru.shurupov.otus.architecture.command.Command;
 
 public class EventLoop implements Runnable {
 
