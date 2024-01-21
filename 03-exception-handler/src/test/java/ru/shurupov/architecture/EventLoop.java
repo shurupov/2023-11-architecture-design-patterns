@@ -3,7 +3,7 @@ package ru.shurupov.architecture;
 import java.util.Queue;
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.architecture.command.Command;
-import ru.shurupov.architecture.exception.BaseException;
+import ru.shurupov.architecture.exception.CommandException;
 import ru.shurupov.architecture.exception.HandlerSelector;
 
 @RequiredArgsConstructor
@@ -17,7 +17,7 @@ public class EventLoop {
       Command command = commandQueue.poll();
       try {
         command.execute();
-      } catch (BaseException e) {
+      } catch (CommandException e) {
         handlerSelector.getHandler(e, command).execute();
       }
     }

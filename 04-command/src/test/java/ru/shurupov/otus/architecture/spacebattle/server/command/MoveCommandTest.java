@@ -13,9 +13,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ru.shurupov.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.command.MoveCommand;
 import ru.shurupov.otus.architecture.spacebattle.server.activity.Movable;
 import ru.shurupov.otus.architecture.spacebattle.server.entity.Velocity;
-import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
 class MoveCommandTest {

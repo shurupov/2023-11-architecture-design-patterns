@@ -11,9 +11,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.Test;
-import ru.shurupov.otus.architecture.spacebattle.server.exception.NotEnoughFuelException;
+import ru.shurupov.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.command.CheckFuelCommand;
+import ru.shurupov.otus.architecture.exception.NotEnoughFuelException;
 import ru.shurupov.otus.architecture.spacebattle.server.activity.FuelTank;
-import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
 class CheckFuelCommandTest {

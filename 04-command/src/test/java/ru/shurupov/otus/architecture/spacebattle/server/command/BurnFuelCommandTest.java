@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ru.shurupov.otus.architecture.command.BurnFuelCommand;
 import ru.shurupov.otus.architecture.spacebattle.server.activity.FuelTank;
 
 @ExtendWith(MockitoExtension.class)

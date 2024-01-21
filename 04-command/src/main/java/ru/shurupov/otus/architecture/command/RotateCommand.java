@@ -1,8 +1,8 @@
-package ru.shurupov.otus.architecture.spacebattle.server.command;
+package ru.shurupov.otus.architecture.command;
 
 import lombok.RequiredArgsConstructor;
+import ru.shurupov.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.spacebattle.server.activity.Rotatable;
-import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
 
 @RequiredArgsConstructor
 public class RotateCommand implements Command {

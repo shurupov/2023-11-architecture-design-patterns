@@ -1,8 +1,8 @@
-package ru.shurupov.otus.architecture.spacebattle.server.command;
+package ru.shurupov.otus.architecture.command;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.architecture.spacebattle.server.exception.CommandException;
+import ru.shurupov.architecture.exception.CommandException;
 
 @RequiredArgsConstructor
 public class MacroCommand implements Command {

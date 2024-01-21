@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.spacebattle.server.command;
+package ru.shurupov.otus.architecture.command;
 
 import java.util.List;
 

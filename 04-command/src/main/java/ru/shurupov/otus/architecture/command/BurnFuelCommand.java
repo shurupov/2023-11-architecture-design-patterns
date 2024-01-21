@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.spacebattle.server.command;
+package ru.shurupov.otus.architecture.command;
 
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.spacebattle.server.activity.FuelTank;

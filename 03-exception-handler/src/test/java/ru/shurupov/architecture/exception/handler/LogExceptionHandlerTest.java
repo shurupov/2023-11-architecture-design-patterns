@@ -12,8 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.architecture.command.Command;
 import ru.shurupov.architecture.command.ExceptionLogCommand;
-import ru.shurupov.architecture.exception.handler.LogExceptionHandler;
-import ru.shurupov.architecture.exception.BaseException;
+import ru.shurupov.architecture.exception.CommandException;
 
 @ExtendWith(MockitoExtension.class)
 class LogExceptionHandlerTest {
@@ -24,7 +23,7 @@ class LogExceptionHandlerTest {
   private Queue<Command> commandQueue;
 
   @Mock
-  private BaseException exception;
+  private CommandException exception;
 
   @BeforeEach
   public void init() {
