@@ -1,9 +1,10 @@
-package ru.shurupov.otus.exceptions;
+package ru.shurupov.architecture;
 
 import java.util.Queue;
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.exception.BaseException;
+import ru.shurupov.architecture.exception.HandlerSelector;
 
 @RequiredArgsConstructor
 public class EventLoop {

@@ -1,8 +1,8 @@
-package ru.shurupov.otus.exceptions.command;
+package ru.shurupov.architecture.command;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.exception.BaseException;
 
 @Slf4j
 @RequiredArgsConstructor

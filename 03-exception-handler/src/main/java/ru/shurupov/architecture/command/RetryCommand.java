@@ -1,10 +1,10 @@
-package ru.shurupov.otus.exceptions.command;
+package ru.shurupov.architecture.command;
 
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.exception.BaseException;
 
 @RequiredArgsConstructor
-public class SecondRetryCommand implements Command {
+public class RetryCommand implements Command {
 
   private final Command command;
 

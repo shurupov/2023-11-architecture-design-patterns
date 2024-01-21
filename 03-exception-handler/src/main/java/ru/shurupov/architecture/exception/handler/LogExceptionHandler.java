@@ -1,11 +1,11 @@
-package ru.shurupov.otus.exceptions.handler;
+package ru.shurupov.architecture.exception.handler;
 
 import java.util.Queue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.command.ExceptionLogCommand;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.command.ExceptionLogCommand;
+import ru.shurupov.architecture.exception.BaseException;
 
 @Slf4j
 @RequiredArgsConstructor

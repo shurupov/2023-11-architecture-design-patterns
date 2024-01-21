@@ -1,12 +1,12 @@
-package ru.shurupov.otus.exceptions;
+package ru.shurupov.architecture.exception;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.exception.BaseException;
 
 @Slf4j
 public class HandlerSelector {

@@ -1,4 +1,4 @@
-package ru.shurupov.otus.exceptions;
+package ru.shurupov.architecture;
 
 
 import static org.mockito.ArgumentMatchers.any;
@@ -14,12 +14,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.command.ExceptionLogCommand;
-import ru.shurupov.otus.exceptions.command.RetryCommand;
-import ru.shurupov.otus.exceptions.command.SecondRetryCommand;
-import ru.shurupov.otus.exceptions.exception.Type1Exception;
-import ru.shurupov.otus.exceptions.handler.generator.DefaultHandlerGenerator;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.command.ExceptionLogCommand;
+import ru.shurupov.architecture.command.RetryCommand;
+import ru.shurupov.architecture.command.SecondRetryCommand;
+import ru.shurupov.architecture.exception.HandlerSelector;
+import ru.shurupov.architecture.exception.Type1Exception;
+import ru.shurupov.architecture.exception.handler.generator.DefaultHandlerGenerator;
 
 @ExtendWith(MockitoExtension.class)
 class EventLoopTest {

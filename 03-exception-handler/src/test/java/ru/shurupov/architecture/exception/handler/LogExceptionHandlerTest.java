@@ -1,4 +1,4 @@
-package ru.shurupov.otus.exceptions.handler;
+package ru.shurupov.architecture.exception.handler;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -10,9 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.command.ExceptionLogCommand;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.command.ExceptionLogCommand;
+import ru.shurupov.architecture.exception.handler.LogExceptionHandler;
+import ru.shurupov.architecture.exception.BaseException;
 
 @ExtendWith(MockitoExtension.class)
 class LogExceptionHandlerTest {

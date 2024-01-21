@@ -1,4 +1,4 @@
-package ru.shurupov.otus.exceptions.exception;
+package ru.shurupov.architecture.exception;
 
 public class Type1Exception extends BaseException {
 

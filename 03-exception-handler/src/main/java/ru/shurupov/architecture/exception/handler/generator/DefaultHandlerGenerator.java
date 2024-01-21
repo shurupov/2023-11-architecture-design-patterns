@@ -1,9 +1,9 @@
-package ru.shurupov.otus.exceptions.handler.generator;
+package ru.shurupov.architecture.exception.handler.generator;
 
 import java.util.function.BiFunction;
 import lombok.extern.slf4j.Slf4j;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.exception.BaseException;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.exception.BaseException;
 
 @Slf4j
 public class DefaultHandlerGenerator implements BiFunction<BaseException, Command, Command> {

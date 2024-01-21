@@ -1,4 +1,4 @@
-package ru.shurupov.otus.exceptions.command;
+package ru.shurupov.architecture.command;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

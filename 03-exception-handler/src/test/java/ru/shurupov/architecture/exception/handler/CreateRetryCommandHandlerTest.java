@@ -1,4 +1,4 @@
-package ru.shurupov.otus.exceptions.handler;
+package ru.shurupov.architecture.exception.handler;
 
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.times;
@@ -9,11 +9,11 @@ import java.util.Queue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.exceptions.command.Command;
-import ru.shurupov.otus.exceptions.command.RetryCommand;
+import ru.shurupov.architecture.command.Command;
+import ru.shurupov.architecture.command.RetryCommand;
+import ru.shurupov.architecture.exception.handler.CreateRetryCommandHandler;
 
 @ExtendWith(MockitoExtension.class)
 class CreateRetryCommandHandlerTest {
