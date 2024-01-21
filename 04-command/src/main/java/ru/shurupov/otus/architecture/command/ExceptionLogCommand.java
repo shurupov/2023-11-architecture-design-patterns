@@ -1,16 +1,17 @@
 package ru.shurupov.otus.architecture.command;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import ru.shurupov.otus.architecture.exception.CommandException;
-import ru.shurupov.otus.architecture.abstraction.activity.Movable;
 
+@Slf4j
 @RequiredArgsConstructor
-public class MoveCommand implements Command {
+public class ExceptionLogCommand implements Command {
 
-  private final Movable movable;
+  private final CommandException exception;
 
   @Override
   public void execute() throws CommandException {
-    movable.move(movable.getVelocity());
+    log.error("Exception handled", exception);
   }
 }

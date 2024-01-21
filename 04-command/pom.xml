@@ -62,6 +62,12 @@
       <version>5.3.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.shurupov.otus.architecture</groupId>
+      <artifactId>02-abstractions</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>

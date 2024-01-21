@@ -79,6 +79,12 @@
       <version>1.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.shurupov.otus.architecture</groupId>
+      <artifactId>04-command</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

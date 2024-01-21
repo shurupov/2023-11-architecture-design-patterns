@@ -2,7 +2,7 @@ package ru.shurupov.otus.architecture.command;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import ru.shurupov.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.exception.CommandException;
 
 @RequiredArgsConstructor
 public class MacroCommand implements Command {

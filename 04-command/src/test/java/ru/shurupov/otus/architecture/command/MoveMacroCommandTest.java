@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.exception.NotEnoughFuelException;
 
 @ExtendWith(MockitoExtension.class)

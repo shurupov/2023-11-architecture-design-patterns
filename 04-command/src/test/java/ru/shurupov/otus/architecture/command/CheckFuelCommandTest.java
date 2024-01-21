@@ -11,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.Test;
-import ru.shurupov.architecture.exception.CommandException;
+import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.exception.NotEnoughFuelException;
 import ru.shurupov.otus.architecture.abstraction.activity.FuelTank;
 

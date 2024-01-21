@@ -2,15 +2,14 @@ package ru.shurupov.otus.architecture.command;
 
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.exception.CommandException;
-import ru.shurupov.otus.architecture.abstraction.activity.Movable;
 
 @RequiredArgsConstructor
-public class MoveCommand implements Command {
+public class RetryCommand implements Command {
 
-  private final Movable movable;
+  private final Command command;
 
   @Override
   public void execute() throws CommandException {
-    movable.move(movable.getVelocity());
+    command.execute();
   }
 }
