@@ -1,8 +1,8 @@
-package ru.shurupov.otus.architecture.spacebattle.server.activity;
+package ru.shurupov.otus.architecture.abstraction.activity;
 
-import ru.shurupov.otus.architecture.spacebattle.server.entity.Angle;
-import ru.shurupov.otus.architecture.spacebattle.server.entity.AngularVelocity;
+import ru.shurupov.otus.architecture.abstraction.entity.AngularVelocity;
 import ru.shurupov.otus.architecture.exception.UnableToGetAngularVelocityException;
+import ru.shurupov.otus.architecture.spacebattle.server.entity.Angle;
 
 public interface Rotatable {
   Angle getDirection();

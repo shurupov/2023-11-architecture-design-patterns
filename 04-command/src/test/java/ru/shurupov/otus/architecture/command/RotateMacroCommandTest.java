@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.spacebattle.server.command;
+package ru.shurupov.otus.architecture.command;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.doThrow;
@@ -11,9 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.architecture.exception.CommandException;
-import ru.shurupov.otus.architecture.command.ModifyVelocityByRotationCommand;
-import ru.shurupov.otus.architecture.command.RotateCommand;
-import ru.shurupov.otus.architecture.command.RotateMacroCommand;
 import ru.shurupov.otus.architecture.exception.NotEnoughFuelException;
 
 @ExtendWith(MockitoExtension.class)

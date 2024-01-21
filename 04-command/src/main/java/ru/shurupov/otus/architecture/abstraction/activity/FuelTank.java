@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.spacebattle.server.activity;
+package ru.shurupov.otus.architecture.abstraction.activity;
 
 public interface FuelTank {
 

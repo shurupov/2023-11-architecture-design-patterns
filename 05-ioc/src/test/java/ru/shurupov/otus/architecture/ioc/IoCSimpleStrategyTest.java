@@ -7,7 +7,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.shurupov.otus.architecture.ioc.strategy.StrategyFactory;
 
 class IoCSimpleStrategyTest {
 
@@ -15,7 +14,7 @@ class IoCSimpleStrategyTest {
 
   @BeforeEach
   void setUp() {
-    ioc = new IoC(StrategyFactory.simple());
+    ioc = IoCFactory.simple();
   }
 
   @Test
@@ -56,7 +55,7 @@ class IoCSimpleStrategyTest {
         .isNotNull()
         .isTrue();
 
-    String name = ioc.<String>resolve("name");
+    String name = ioc.resolve("name");
 
     assertThat(name).isEqualTo("Evgeny");
   }

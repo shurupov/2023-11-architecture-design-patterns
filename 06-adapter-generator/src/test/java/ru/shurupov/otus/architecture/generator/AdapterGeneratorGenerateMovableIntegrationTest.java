@@ -8,12 +8,12 @@ import ru.shurupov.otus.architecture.activity.entity.Position;
 import ru.shurupov.otus.architecture.activity.entity.Velocity;
 import ru.shurupov.otus.architecture.generator.ClassStructure.FieldTemplate;
 import ru.shurupov.otus.architecture.generator.exception.UnableToGenerateInstanceException;
-import ru.shurupov.otus.architecture.ioc.IoC;
-import ru.shurupov.otus.architecture.ioc.strategy.IoCFactory;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import ru.shurupov.otus.architecture.ioc.IoC;
+import ru.shurupov.otus.architecture.ioc.IoCFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -2,9 +2,9 @@ package ru.shurupov.otus.architecture.command;
 
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.architecture.exception.CommandException;
-import ru.shurupov.otus.architecture.spacebattle.server.activity.Acceleratable;
-import ru.shurupov.otus.architecture.spacebattle.server.activity.Movable;
-import ru.shurupov.otus.architecture.spacebattle.server.activity.Rotatable;
+import ru.shurupov.otus.architecture.abstraction.activity.Acceleratable;
+import ru.shurupov.otus.architecture.abstraction.activity.Movable;
+import ru.shurupov.otus.architecture.abstraction.activity.Rotatable;
 
 @RequiredArgsConstructor
 public class ModifyVelocityByRotationCommand implements Command {

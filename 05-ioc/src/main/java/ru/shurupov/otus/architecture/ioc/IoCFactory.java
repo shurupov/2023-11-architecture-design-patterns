@@ -1,9 +1,7 @@
-package ru.shurupov.otus.architecture.ioc.strategy;
+package ru.shurupov.otus.architecture.ioc;
 
 import java.util.List;
 import java.util.Map;
-
-import ru.shurupov.otus.architecture.ioc.IoC;
 import ru.shurupov.otus.architecture.ioc.context.CreateScope;
 import ru.shurupov.otus.architecture.ioc.context.IocRegister;
 import ru.shurupov.otus.architecture.ioc.context.IocUnregister;
@@ -14,6 +12,9 @@ import ru.shurupov.otus.architecture.ioc.handler.resolve.IocConsumerResolver;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocContextProcessorHandler;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocFunctionResolver;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocSupplierResolver;
+import ru.shurupov.otus.architecture.ioc.strategy.IoCStrategy;
+import ru.shurupov.otus.architecture.ioc.strategy.ScopedIoCStrategy;
+import ru.shurupov.otus.architecture.ioc.strategy.SimpleIoCStrategy;
 
 public class IoCFactory {
 
