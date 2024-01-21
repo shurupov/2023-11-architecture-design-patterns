@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>02-abstractions-resistant-to-change</artifactId>
+  <artifactId>02-abstractions</artifactId>
   <version>1.0</version>
 
   <properties>
