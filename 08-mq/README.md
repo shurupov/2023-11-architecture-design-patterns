@@ -6,7 +6,7 @@ Write an endpoint for receiving incoming messages by the Game server.
 The game server is an application on which the status of spaceship battles is calculated, that is, all those commands that were considered in previous classes are executed.
 The agent is a special application on which the player runs his algorithm for managing his team of tanks.
 For the full implementation of the game, it is necessary to ensure two-way data exchange between the Game server and Agents. An Endpoint for receiving incoming messages by the Game Server will be part of such an exchange.
-As a result of the DZ execution, a code based on the patterns of the messaging system for receiving incoming messages from Agents will be obtained.
+As a result of the completed homework, a code based on the patterns of the messaging system for receiving incoming messages from Agents will be obtained.
 The goal: to apply the skills of building an architecture based on a messaging system.
 
 ## Tasks:
