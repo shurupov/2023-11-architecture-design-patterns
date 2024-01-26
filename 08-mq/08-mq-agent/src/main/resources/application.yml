@@ -1,0 +1,10 @@
+server:
+  port: 8082
+
+spring:
+  rabbitmq:
+    template:
+      exchange: "game"
+      routing-key: "game"
+    host: localhost
+    port: 5672

@@ -21,9 +21,11 @@ Certificate: (will be added later)
 - Testing complexity (Unit testing, TDD)
   - [Unit testing, TDD](01-unit-testing)
 - Software development speed
-  - [Abstractions resistant to change](02-abstractions-resistant-to-change)
+  - [Abstractions Resistant to cChange](02-abstractions)
   - [SOLID and Exceptions](03-exception-handler)
   - [Command and Macrocommand](04-command)
   - [Inversion of Control (IoC)](05-ioc)
   - [Generated Adapter](06-adapter-generator)
-  - [Multithreaded command execution](07-concurrent-command-execution)
+- Scaling
+  - [Multithreaded Command Execution](07-concurrent-command-execution)
+  - [Message Queue Command Receiving](08-mq)

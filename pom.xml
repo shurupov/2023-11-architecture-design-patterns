@@ -18,6 +18,7 @@
         <module>05-ioc</module>
         <module>06-adapter-generator</module>
         <module>07-concurrent-command-execution</module>
+        <module>08-mq</module>
     </modules>
 
 
