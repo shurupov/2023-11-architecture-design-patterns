@@ -1,13 +1,11 @@
 package ru.shurupov.otus.architecture.game.server.service;
 
+import static spark.Spark.halt;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.TextCodec;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -15,7 +13,8 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import ru.shurupov.otus.architecture.game.server.controller.request.AuthRequest;
+import ru.shurupov.otus.architecture.game.server.controller.request.JoinGameRequest;
+import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
 
 public class JwtService {
 
@@ -24,24 +23,30 @@ public class JwtService {
 
   private final Key key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes(StandardCharsets.UTF_8));
 
-  public String generateToken(String username) {
+  public String generateToken(JoinGameRequest joinGameRequest) {
 
     String token = Jwts.builder()
-        .setSubject(username)
+        .setSubject(joinGameRequest.getUsername())
         .setIssuedAt(Date.from(getIssuedTime()))
         .setExpiration(Date.from(getExpireTime()))
+        .claim("gameId", joinGameRequest.getGameId())
         .signWith(key)
         .compact();
 
     return token;
   }
 
-  public String getUsername(String token) {
-    Jws<Claims> jwt = Jwts.parserBuilder()
-        .setSigningKey(key)
-        .build()
-        .parseClaimsJws(token);
-    return jwt.getBody().getSubject();
+  public GamePlayer getPlayer(String token) {
+    try {
+      Jws<Claims> jwt = Jwts.parserBuilder()
+          .setSigningKey(key)
+          .build()
+          .parseClaimsJws(token);
+      return new GamePlayer(jwt.getBody().get("gameId", String.class), jwt.getBody().getSubject());
+    } catch (JwtException e) {
+      halt(401, "Your token is invalid");
+      return null;
+    }
   }
 
   private Instant getExpireTime() {

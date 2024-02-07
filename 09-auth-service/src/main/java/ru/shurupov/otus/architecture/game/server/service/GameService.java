@@ -1,29 +1,14 @@
 package ru.shurupov.otus.architecture.game.server.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Collection;
 import ru.shurupov.otus.architecture.game.server.controller.request.GameCommandMessage;
-import ru.shurupov.otus.architecture.game.server.controller.request.JoinGameRequest;
-import ru.shurupov.otus.architecture.game.server.controller.response.AddCommandResponse;
-import ru.shurupov.otus.architecture.game.server.controller.response.JoinGameResponse;
+import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
 
-@Slf4j
-@RequiredArgsConstructor
-public class GameService {
+public interface GameService {
 
-  private final JwtService jwtService;
+  String addGame(Collection<String> participants);
+  boolean containsGame(String gameId);
+  boolean containsParticipant(String gameId, String participant);
 
-  public JoinGameResponse joinGame(JoinGameRequest joinGameRequest) {
-    /*
-    * TODO Check whether game exists and you are in participants
-    * */
-    String token = jwtService.generateToken(joinGameRequest.getUsername());
-    return new JoinGameResponse(token);
-  }
-
-  public AddCommandResponse addCommand(String token, GameCommandMessage command) {
-    String username = jwtService.getUsername(token);
-    log.info("User: {}, Comamnd: {}", username, command);
-    return new AddCommandResponse(String.format("Added command %s for user %s", command, username));
-  }
+  void passCommand(GamePlayer player, GameCommandMessage message);
 }
