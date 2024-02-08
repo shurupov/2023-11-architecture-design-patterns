@@ -14,7 +14,8 @@ Certificate: (will be added later)
   `SOLID`, `Command`, `Exception`, `TDD`, `Unit testing`, `Abstraction`,
   `Adapter`, `Command`, `Macrocommand`, `Inversion of Control`, `Factory`,
   `Abstract Factory`, `Adapter`, `Runtime Compilation`, 
-  `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`
+  `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`,
+  `Authorizatin`, `Authentication`, `JWT`, `Microservice`
 </details>
 
 ## Modules/Homeworks
@@ -29,3 +30,5 @@ Certificate: (will be added later)
 - Scaling
   - [Multithreaded Command Execution](07-concurrent-command-execution)
   - [Message Queue Command Receiving](08-mq)
+- Time to Market
+  - [Authorization Microservice](09-auth-service)
