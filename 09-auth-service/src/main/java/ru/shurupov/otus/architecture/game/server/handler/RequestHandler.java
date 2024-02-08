@@ -24,9 +24,9 @@ public class RequestHandler {
   private final JwtService jwtService;
   private final GameController gameController;
 
-  public RequestHandler(GameService gameService) {
+  public RequestHandler(GameService gameService, String jwtSecret, int jwtTtlMinutes) {
     gson = new Gson();
-    jwtService = new JwtService();
+    jwtService = new JwtService(jwtSecret, jwtTtlMinutes);
     GameAccessService gameAccessService = new GameAccessService(gameService, jwtService);
     gameController = new GameController(gameAccessService);
   }

@@ -5,6 +5,7 @@ import ru.shurupov.otus.architecture.game.server.controller.request.CreateGameRe
 import ru.shurupov.otus.architecture.game.server.controller.request.GameCommandMessage;
 import ru.shurupov.otus.architecture.game.server.controller.request.JoinGameRequest;
 import ru.shurupov.otus.architecture.game.server.controller.response.AddCommandResponse;
+import ru.shurupov.otus.architecture.game.server.controller.response.CreateGameResponse;
 import ru.shurupov.otus.architecture.game.server.controller.response.JoinGameResponse;
 import ru.shurupov.otus.architecture.game.server.service.GameAccessService;
 import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
@@ -13,7 +14,7 @@ import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
 public class GameController {
 
   private final GameAccessService gameAccessService;
-  public String createGame(CreateGameRequest createGameRequest) {
+  public CreateGameResponse createGame(CreateGameRequest createGameRequest) {
     return gameAccessService.createGame(createGameRequest);
   }
 

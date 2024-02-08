@@ -18,10 +18,16 @@ import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
 
 public class JwtService {
 
-  public final static String JWT_SECRET = "gameserverjwttokensecretgameserverjwttokensecretgameserverjwttokensecretgameserverjwttokensecret";
-  public final static long TOKEN_TIMEOUT_MINUTES = 120;
+  private final String jwtSecret;
+  private final long tokenTtlMinutes;
 
-  private final Key key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes(StandardCharsets.UTF_8));
+  private final Key key;
+
+  public JwtService(String jwtSecret, long tokenTtlMinutes) {
+    this.jwtSecret = jwtSecret;
+    this.tokenTtlMinutes = tokenTtlMinutes;
+    key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+  }
 
   public String generateToken(JoinGameRequest joinGameRequest) {
 
@@ -50,7 +56,7 @@ public class JwtService {
   }
 
   private Instant getExpireTime() {
-    return LocalDateTime.now().plusMinutes(TOKEN_TIMEOUT_MINUTES).atZone(ZoneId.systemDefault()).toInstant();
+    return LocalDateTime.now().plusMinutes(tokenTtlMinutes).atZone(ZoneId.systemDefault()).toInstant();
   }
 
   private Instant getIssuedTime() {

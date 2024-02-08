@@ -7,8 +7,12 @@ public class ServerApp {
 
   public static void main(String[] args) {
     /*
-    * We aer placing this implementation, but then we can pass implementation with using IoC
+    * We are placing this implementation, but then we can pass implementation with using IoC
     * */
-    new RequestHandler(new GameServiceMapSetImpl()).init();
+    new RequestHandler(
+        new GameServiceMapSetImpl(),
+        "gameserverjwttokensecretgameserverjwttokensecretgameserverjwttokensecretgameserverjwttokensecret",
+        120
+    ).init();
   }
 }

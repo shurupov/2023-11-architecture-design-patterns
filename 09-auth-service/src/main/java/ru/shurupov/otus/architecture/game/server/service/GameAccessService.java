@@ -8,6 +8,7 @@ import ru.shurupov.otus.architecture.game.server.controller.request.CreateGameRe
 import ru.shurupov.otus.architecture.game.server.controller.request.GameCommandMessage;
 import ru.shurupov.otus.architecture.game.server.controller.request.JoinGameRequest;
 import ru.shurupov.otus.architecture.game.server.controller.response.AddCommandResponse;
+import ru.shurupov.otus.architecture.game.server.controller.response.CreateGameResponse;
 import ru.shurupov.otus.architecture.game.server.controller.response.JoinGameResponse;
 import ru.shurupov.otus.architecture.game.server.service.dto.GamePlayer;
 
@@ -18,8 +19,8 @@ public class GameAccessService {
   private final GameService gameService;
   private final JwtService jwtService;
 
-  public String createGame(CreateGameRequest createGameRequest) {
-    return gameService.addGame(createGameRequest.getParticipants());
+  public CreateGameResponse createGame(CreateGameRequest createGameRequest) {
+    return new CreateGameResponse(gameService.addGame(createGameRequest.getParticipants()));
   }
 
   public JoinGameResponse joinGame(JoinGameRequest joinGameRequest) {
