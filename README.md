@@ -32,3 +32,4 @@ Certificate: (will be added later)
   - [Message Queue Command Receiving](08-mq)
 - Time to Market
   - [Authorization Microservice](09-auth-service)
+  - [Microservice Architecture](10-microservice-architecture)
