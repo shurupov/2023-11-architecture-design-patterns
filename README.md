@@ -15,7 +15,8 @@ Certificate: (will be added later)
   `Adapter`, `Command`, `Macrocommand`, `Inversion of Control`, `Factory`,
   `Abstract Factory`, `Adapter`, `Runtime Compilation`, 
   `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`,
-  `Authorizatin`, `Authentication`, `JWT`, `Microservice`
+  `Authorizatin`, `Authentication`, `JWT`, `Microservice`, 
+  `Design Patterns`, `Chain of Respondibility`
 </details>
 
 ## Modules/Homeworks
@@ -33,3 +34,5 @@ Certificate: (will be added later)
 - Time to Market
   - [Authorization Microservice](09-auth-service)
   - [Microservice Architecture](10-microservice-architecture)
+- Design Patterns
+  - [Chain of Responsibility](11-chain-of-responsibility)
