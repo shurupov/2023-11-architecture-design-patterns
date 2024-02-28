@@ -20,6 +20,7 @@
         <module>07-concurrent-command-execution</module>
         <module>08-mq</module>
         <module>09-auth-service</module>
+        <module>11-chain-of-responsibility</module>
     </modules>
 
 
