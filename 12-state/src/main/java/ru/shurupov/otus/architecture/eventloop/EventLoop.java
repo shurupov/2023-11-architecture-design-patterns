@@ -1,11 +1,11 @@
-package ru.shurupov.otus.architecture.eventloop.executor;
+package ru.shurupov.otus.architecture.eventloop;
 
 import java.util.concurrent.BlockingQueue;
 import lombok.Getter;
 import lombok.Setter;
 import ru.shurupov.otus.architecture.command.Command;
-import ru.shurupov.otus.architecture.eventloop.executor.state.EventLoopState;
-import ru.shurupov.otus.architecture.eventloop.executor.state.Init;
+import ru.shurupov.otus.architecture.eventloop.state.EventLoopState;
+import ru.shurupov.otus.architecture.eventloop.state.Init;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 public class EventLoop implements Runnable {

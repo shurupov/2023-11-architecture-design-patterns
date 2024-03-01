@@ -1,8 +1,9 @@
-package ru.shurupov.otus.architecture.eventloop.executor;
+package ru.shurupov.otus.architecture.eventloop.action;
 
 import java.util.concurrent.BlockingQueue;
 import lombok.extern.slf4j.Slf4j;
 import ru.shurupov.otus.architecture.command.Command;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
 import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
 

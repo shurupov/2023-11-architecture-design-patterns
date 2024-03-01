@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.eventloop.executor.state;
+package ru.shurupov.otus.architecture.eventloop.state;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoop;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoopAction;
-import ru.shurupov.otus.architecture.eventloop.executor.state.utils.Assertions;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
+import ru.shurupov.otus.architecture.eventloop.action.EventLoopAction;
+import ru.shurupov.otus.architecture.eventloop.state.utils.Assertions;
 
 @ExtendWith(MockitoExtension.class)
 class InitTest {

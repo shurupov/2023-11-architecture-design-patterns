@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.eventloop.executor;
+package ru.shurupov.otus.architecture.eventloop.action;
 
 import java.util.Queue;
 import java.util.concurrent.BlockingQueue;

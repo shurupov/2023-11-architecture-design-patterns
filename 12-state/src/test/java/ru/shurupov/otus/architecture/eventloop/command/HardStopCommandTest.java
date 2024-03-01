@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.otus.architecture.command.Command;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoop;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
 
 @ExtendWith(MockitoExtension.class)
 class HardStopCommandTest {

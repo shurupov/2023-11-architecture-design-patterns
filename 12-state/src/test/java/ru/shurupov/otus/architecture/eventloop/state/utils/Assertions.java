@@ -1,9 +1,9 @@
-package ru.shurupov.otus.architecture.eventloop.executor.state.utils;
+package ru.shurupov.otus.architecture.eventloop.state.utils;
 
 import static org.mockito.ArgumentMatchers.argThat;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoop;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
 
 public class Assertions {
 

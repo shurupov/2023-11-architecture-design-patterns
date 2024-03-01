@@ -2,7 +2,7 @@ package ru.shurupov.otus.architecture.eventloop.command;
 
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.command.Command;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoop;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
 import ru.shurupov.otus.architecture.exception.CommandException;
 
 @RequiredArgsConstructor

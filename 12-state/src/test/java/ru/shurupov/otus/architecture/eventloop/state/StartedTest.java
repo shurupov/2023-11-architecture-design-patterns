@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.eventloop.executor.state;
+package ru.shurupov.otus.architecture.eventloop.state;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoop;
-import ru.shurupov.otus.architecture.eventloop.executor.EventLoopActionSoftStop;
-import ru.shurupov.otus.architecture.eventloop.executor.MoveToStopEventLoopAction;
-import ru.shurupov.otus.architecture.eventloop.executor.state.utils.Assertions;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
+import ru.shurupov.otus.architecture.eventloop.action.EventLoopActionSoftStopAction;
+import ru.shurupov.otus.architecture.eventloop.action.MoveToStopEventLoopAction;
+import ru.shurupov.otus.architecture.eventloop.state.utils.Assertions;
 
 @ExtendWith(MockitoExtension.class)
 class StartedTest {
@@ -51,7 +51,7 @@ class StartedTest {
   public void givenEventLoop_whenSoftStop_thenStateChanged() {
     started.softStop();
 
-    verify(eventLoop, times(1)).setAction(any(EventLoopActionSoftStop.class));
+    verify(eventLoop, times(1)).setAction(any(EventLoopActionSoftStopAction.class));
     verify(eventLoop, times(1)).setState(any(SoftStopped.class));
     verify(eventLoop, times(1))
         .setState(Assertions.argHasField(SoftStopped.class, "eventLoop", eventLoop));

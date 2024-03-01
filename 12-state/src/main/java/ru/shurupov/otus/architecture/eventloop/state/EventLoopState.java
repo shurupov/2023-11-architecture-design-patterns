@@ -1,4 +1,4 @@
-package ru.shurupov.otus.architecture.eventloop.executor.state;
+package ru.shurupov.otus.architecture.eventloop.state;
 
 public interface EventLoopState {
 
