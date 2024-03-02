@@ -3,7 +3,8 @@ package ru.shurupov.otus.architecture.eventloop.state;
 import lombok.RequiredArgsConstructor;
 import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.eventloop.EventLoop;
-import ru.shurupov.otus.architecture.eventloop.action.EventLoopAction;
+import ru.shurupov.otus.architecture.eventloop.action.CommandHandler;
+import ru.shurupov.otus.architecture.eventloop.action.EventLoopCommandHandler;
 
 @RequiredArgsConstructor
 public class Init implements EventLoopState {
@@ -12,8 +13,8 @@ public class Init implements EventLoopState {
 
   @Override
   public void start() {
-    Command action = new EventLoopAction(eventLoop);
-    eventLoop.setAction(action);
+    CommandHandler action = new EventLoopCommandHandler(eventLoop);
+    eventLoop.setHandler(action);
     eventLoop.setState(new Started(eventLoop));
     eventLoop.getThread().start();
   }

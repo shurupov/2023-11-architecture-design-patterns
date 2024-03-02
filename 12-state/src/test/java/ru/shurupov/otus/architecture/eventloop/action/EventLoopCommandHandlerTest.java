@@ -19,7 +19,7 @@ import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 @ExtendWith(MockitoExtension.class)
-class EventLoopActionSoftStopActionTest {
+class EventLoopCommandHandlerTest {
 
   @Mock
   private BlockingQueue<Command> commandQueue;
@@ -38,12 +38,12 @@ class EventLoopActionSoftStopActionTest {
   public void init() {
     when(eventLoop.getQueue()).thenReturn(commandQueue);
     when(eventLoop.getHandlerSelector()).thenReturn(handlerSelector);
-    action = new EventLoopActionSoftStopAction(eventLoop);
+
+    action = new EventLoopCommandHandler(eventLoop);
   }
 
   @Test
   void givenCommandFromQueue_whenExecute_thenCommandExecuted() throws InterruptedException {
-    when(commandQueue.isEmpty()).thenReturn(false);
     when(commandQueue.take()).thenReturn(command);
 
     action.execute();
@@ -55,7 +55,6 @@ class EventLoopActionSoftStopActionTest {
   void givenCommandFromQueue_whenExecuteWithException_thenExceptionHandled() throws InterruptedException {
     CommandException e = new CommandException();
 
-    when(commandQueue.isEmpty()).thenReturn(false);
     when(commandQueue.take()).thenReturn(command);
     doThrow(e).when(command).execute();
     when(handlerSelector.getHandler(any(), any())).thenReturn(handler);
@@ -65,14 +64,5 @@ class EventLoopActionSoftStopActionTest {
     verify(command, times(1)).execute();
     verify(handlerSelector, times(1)).getHandler(eq(e), eq(command));
     verify(handler, times(1)).execute();
-  }
-
-  @Test
-  void givenEmptyQueue_whenExecute_thenEventLoopStopped() {
-    when(commandQueue.isEmpty()).thenReturn(true);
-
-    action.execute();
-
-    verify(eventLoop, times(1)).stop();
   }
 }

@@ -19,7 +19,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.eventloop.EventLoop;
-import ru.shurupov.otus.architecture.eventloop.action.EventLoopAction;
+import ru.shurupov.otus.architecture.eventloop.action.EventLoopCommandHandler;
 
 @ExtendWith(MockitoExtension.class)
 class PreparedToStopTest {
@@ -44,7 +44,7 @@ class PreparedToStopTest {
 
     preparedToStop.start();
 
-    verify(eventLoop, times(1)).setAction(any(EventLoopAction.class));
+    verify(eventLoop, times(1)).setHandler(any(EventLoopCommandHandler.class));
     verify(eventLoop, atLeastOnce()).getQueue();
     verify(queue, times(1)).addAll(eq(tempQueue));
     verify(eventLoop, times(1)).setState(any(Started.class));

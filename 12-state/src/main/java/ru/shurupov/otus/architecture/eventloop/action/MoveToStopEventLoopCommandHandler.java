@@ -8,12 +8,12 @@ import ru.shurupov.otus.architecture.eventloop.EventLoop;
 import ru.shurupov.otus.architecture.eventloop.command.ChangeStateCommand;
 
 @Slf4j
-public class MoveToStopEventLoopAction extends EventLoopAction {
+public class MoveToStopEventLoopCommandHandler extends EventLoopCommandHandler {
 
   @Getter
   private final Queue<Command> tempQueue;
 
-  public MoveToStopEventLoopAction(EventLoop eventLoop, Queue<Command> tempQueue) {
+  public MoveToStopEventLoopCommandHandler(EventLoop eventLoop, Queue<Command> tempQueue) {
     super(eventLoop);
     this.tempQueue = tempQueue;
   }

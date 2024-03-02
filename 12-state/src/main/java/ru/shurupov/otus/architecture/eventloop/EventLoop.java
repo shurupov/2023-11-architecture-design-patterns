@@ -4,6 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import lombok.Getter;
 import lombok.Setter;
 import ru.shurupov.otus.architecture.command.Command;
+import ru.shurupov.otus.architecture.eventloop.action.CommandHandler;
 import ru.shurupov.otus.architecture.eventloop.state.EventLoopState;
 import ru.shurupov.otus.architecture.eventloop.state.Init;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
@@ -11,7 +12,7 @@ import ru.shurupov.otus.architecture.exception.HandlerSelector;
 public class EventLoop implements Runnable {
 
   @Setter
-  private Command action;
+  private CommandHandler handler;
   @Getter
   private final Thread thread;
   @Getter
@@ -48,7 +49,7 @@ public class EventLoop implements Runnable {
   @Override
   public void run() {
     while (state.isRun()) {
-      action.execute();
+      handler.execute();
     }
   }
 }

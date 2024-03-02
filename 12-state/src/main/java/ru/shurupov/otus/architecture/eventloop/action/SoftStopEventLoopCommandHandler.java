@@ -2,11 +2,11 @@ package ru.shurupov.otus.architecture.eventloop.action;
 
 import ru.shurupov.otus.architecture.eventloop.EventLoop;
 
-public class EventLoopActionSoftStopAction extends EventLoopAction {
+public class SoftStopEventLoopCommandHandler extends EventLoopCommandHandler {
 
   private final EventLoop eventLoop;
 
-  public EventLoopActionSoftStopAction(EventLoop eventLoop) {
+  public SoftStopEventLoopCommandHandler(EventLoop eventLoop) {
     super(eventLoop);
     this.eventLoop = eventLoop;
   }

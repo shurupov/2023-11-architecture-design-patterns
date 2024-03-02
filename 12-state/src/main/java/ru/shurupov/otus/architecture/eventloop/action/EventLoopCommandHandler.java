@@ -8,12 +8,12 @@ import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.exception.HandlerSelector;
 
 @Slf4j
-public class EventLoopAction implements Command {
+public class EventLoopCommandHandler implements CommandHandler {
 
   protected final BlockingQueue<Command> commandQueue;
   private final HandlerSelector handlerSelector;
 
-  public EventLoopAction(EventLoop eventLoop) {
+  public EventLoopCommandHandler(EventLoop eventLoop) {
     commandQueue = eventLoop.getQueue();
     handlerSelector = eventLoop.getHandlerSelector();
   }

@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.otus.architecture.eventloop.EventLoop;
-import ru.shurupov.otus.architecture.eventloop.action.EventLoopAction;
+import ru.shurupov.otus.architecture.eventloop.action.EventLoopCommandHandler;
 import ru.shurupov.otus.architecture.eventloop.state.utils.Assertions;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +36,7 @@ class InitTest {
 
     init.start();
 
-    verify(eventLoop, times(1)).setAction(any(EventLoopAction.class));
+    verify(eventLoop, times(1)).setHandler(any(EventLoopCommandHandler.class));
     verify(thread, times(1)).start();
     verify(eventLoop, times(1)).setState(any(Started.class));
     verify(eventLoop, times(1))

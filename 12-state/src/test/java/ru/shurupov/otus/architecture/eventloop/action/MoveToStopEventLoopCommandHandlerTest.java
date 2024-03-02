@@ -16,7 +16,7 @@ import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.eventloop.EventLoop;
 
 @ExtendWith(MockitoExtension.class)
-class MoveToStopEventLoopActionTest {
+class MoveToStopEventLoopCommandHandlerTest {
 
   @Mock
   private Command command;
@@ -32,7 +32,7 @@ class MoveToStopEventLoopActionTest {
   @BeforeEach
   public void init() {
     when(eventLoop.getQueue()).thenReturn(queue);
-    action = new MoveToStopEventLoopAction(eventLoop, tempQueue);
+    action = new MoveToStopEventLoopCommandHandler(eventLoop, tempQueue);
   }
 
   @Test
