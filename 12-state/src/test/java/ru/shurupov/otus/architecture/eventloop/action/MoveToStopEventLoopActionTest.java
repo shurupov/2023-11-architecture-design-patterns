@@ -13,13 +13,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.shurupov.otus.architecture.command.Command;
+import ru.shurupov.otus.architecture.eventloop.EventLoop;
 
 @ExtendWith(MockitoExtension.class)
 class MoveToStopEventLoopActionTest {
 
   @Mock
   private Command command;
-
+  @Mock
+  private EventLoop eventLoop;
   @Mock
   private BlockingQueue<Command> queue;
   @Mock
@@ -29,7 +31,8 @@ class MoveToStopEventLoopActionTest {
 
   @BeforeEach
   public void init() {
-    action = new MoveToStopEventLoopAction(queue, tempQueue);
+    when(eventLoop.getQueue()).thenReturn(queue);
+    action = new MoveToStopEventLoopAction(eventLoop, tempQueue);
   }
 
   @Test

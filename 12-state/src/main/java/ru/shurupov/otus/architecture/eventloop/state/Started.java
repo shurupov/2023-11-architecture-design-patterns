@@ -20,7 +20,7 @@ public class Started implements EventLoopState {
   @Override
   public void prepareToStop() {
     Queue<Command> tempQueue = new LinkedList<>();
-    Command action = new MoveToStopEventLoopAction(eventLoop.getQueue(), tempQueue);
+    Command action = new MoveToStopEventLoopAction(eventLoop, tempQueue);
     eventLoop.setAction(action);
     eventLoop.setState(new PreparedToStop(eventLoop, tempQueue));
   }

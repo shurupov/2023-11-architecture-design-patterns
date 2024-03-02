@@ -65,7 +65,7 @@ class InitTest {
   }
 
   @Test
-  public void givenEventLoop_whenIsRun_thenFalseReturned() {
-    assertThat(init.isRun()).isFalse();
+  public void givenEventLoop_whenIsRun_thenTrueReturned() {
+    assertThat(init.isRun()).isTrue();
   }
 }

@@ -47,7 +47,7 @@ public class EventLoop implements Runnable {
 
   @Override
   public void run() {
-    while (!state.isRun()) {
+    while (state.isRun()) {
       action.execute();
     }
   }

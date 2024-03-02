@@ -23,13 +23,17 @@ public class EventLoopAction implements Command {
     Command command;
     try {
       command = commandQueue.take();
-      try {
-        command.execute();
-      } catch (CommandException e) {
-        handlerSelector.getHandler(e, command).execute();
-      }
+      execute(command);
     } catch (InterruptedException e) {
       log.warn(e.getMessage(), e);
+    }
+  }
+
+  protected void execute(Command command) {
+    try {
+      command.execute();
+    } catch (CommandException e) {
+      handlerSelector.getHandler(e, command).execute();
     }
   }
 }
