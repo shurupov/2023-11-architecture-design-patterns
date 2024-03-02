@@ -20,6 +20,7 @@ public class EventLoop implements Runnable {
   @Getter
   private final HandlerSelector handlerSelector;
   @Setter
+  @Getter
   private EventLoopState state;
 
   public EventLoop(BlockingQueue<Command> queue, HandlerSelector handlerSelector) {
