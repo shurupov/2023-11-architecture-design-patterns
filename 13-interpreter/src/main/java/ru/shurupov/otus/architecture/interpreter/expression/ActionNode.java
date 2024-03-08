@@ -1,7 +1,7 @@
 package ru.shurupov.otus.architecture.interpreter.expression;
 
-import ru.shurupov.otus.architecture.interpreter.interpretation.Action;
+import ru.shurupov.otus.architecture.control.ControlAction;
 
-public interface ActionNode extends AstNode<Action> {
+public interface ActionNode extends AstNode<ControlAction> {
   String getActionParameter();
 }

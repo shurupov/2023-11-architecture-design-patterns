@@ -1,7 +1,7 @@
 package ru.shurupov.otus.architecture.interpreter.expression;
 
 import lombok.Value;
-import ru.shurupov.otus.architecture.interpreter.interpretation.Action;
+import ru.shurupov.otus.architecture.control.ControlAction;
 import ru.shurupov.otus.architecture.ioc.IoC;
 
 @Value
@@ -12,7 +12,7 @@ public class ActionNodeImpl implements ActionNode {
   String actionParameter;
 
   @Override
-  public Action interpret(IoC ioc) {
+  public ControlAction interpret(IoC ioc) {
     return ioc.resolve("Object.Action", objectId, actionName);
   }
 }

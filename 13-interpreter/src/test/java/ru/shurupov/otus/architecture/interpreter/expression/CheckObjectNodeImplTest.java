@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.control.ObjectMeta;
 import ru.shurupov.otus.architecture.control.User;
+import ru.shurupov.otus.architecture.control.impl.DefaultObjectMetaImpl;
 import ru.shurupov.otus.architecture.ioc.IoC;
 import ru.shurupov.otus.architecture.ioc.IoCFactory;
 
@@ -25,9 +26,9 @@ class CheckObjectNodeImplTest {
         ioc.resolve("IoC.Register", args)
     );
 
-    ioc.resolve("Object.Add", "Common.Meta.AddFrom", (Function<Object[], Object>) (Object[] args) -> {
+    ioc.resolve("Object.Add", "Control.Meta.AddFrom", (Function<Object[], Object>) (Object[] args) -> {
       String id = (String) args[0];
-      ObjectMeta meta = () -> ((Map<String, String>) ioc.resolve(id)).get("type");
+      ObjectMeta meta = new DefaultObjectMetaImpl(ioc.resolve(id));
       return ioc.resolve("Object.Add", "Meta." + id, meta);
     });
 
@@ -37,7 +38,7 @@ class CheckObjectNodeImplTest {
     );
 
     ioc.resolve("Object.Add", "ship1", new HashMap<>(Map.of("type", "ship")));
-    ioc.resolve("Common.Meta.AddFrom", "ship1");
+    ioc.resolve("Control.Meta.AddFrom", "ship1");
 
   }
 

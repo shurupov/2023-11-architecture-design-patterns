@@ -11,7 +11,7 @@ import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.control.User;
-import ru.shurupov.otus.architecture.control.UserImpl;
+import ru.shurupov.otus.architecture.control.impl.DefaultUserImpl;
 import ru.shurupov.otus.architecture.ioc.IoC;
 import ru.shurupov.otus.architecture.ioc.IoCFactory;
 
@@ -31,7 +31,7 @@ class PermissionNodeImplTest {
     Function<Object[], User> createUserAdapterFunction = (Object[] args) -> {
       String id = (String) args[0];
       Map<String, Object> userObject = ioc.resolve(id);
-      return new UserImpl(userObject);
+      return new DefaultUserImpl(userObject);
     };
 
     ioc.<Boolean>resolve("IoC.Register", "User.CreateFromObject", createUserAdapterFunction);

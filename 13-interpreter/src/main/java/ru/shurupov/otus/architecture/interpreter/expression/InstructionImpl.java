@@ -6,7 +6,7 @@ import ru.shurupov.otus.architecture.command.Command;
 import ru.shurupov.otus.architecture.exception.CommandException;
 import ru.shurupov.otus.architecture.interpreter.exception.ControlPermissionCommandException;
 import ru.shurupov.otus.architecture.interpreter.exception.ObjectNotFoundCommandException;
-import ru.shurupov.otus.architecture.interpreter.interpretation.Action;
+import ru.shurupov.otus.architecture.control.ControlAction;
 import ru.shurupov.otus.architecture.ioc.IoC;
 
 @Builder
@@ -34,12 +34,12 @@ public class InstructionImpl implements Instruction {
   @Value
   public static class InstructionCommand implements Command {
 
-    Action action;
+    ControlAction controlAction;
     String actionParameter;
 
     @Override
     public void execute() throws CommandException {
-      action.accept(actionParameter);
+      controlAction.apply(actionParameter);
     }
   }
 }
