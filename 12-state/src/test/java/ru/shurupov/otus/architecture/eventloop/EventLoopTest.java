@@ -76,7 +76,7 @@ class EventLoopTest {
     queue.put(command2);
 
     await()
-        .atLeast(500L, TimeUnit.MILLISECONDS)
+        .atMost(500L, TimeUnit.MILLISECONDS)
         .until(() -> Stopped.class.equals(eventLoop.getState().getClass()));
 
     assertThat(queue).isEmpty();
