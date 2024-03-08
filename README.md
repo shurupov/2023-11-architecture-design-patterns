@@ -16,7 +16,8 @@ Certificate: (will be added later)
   `Abstract Factory`, `Adapter`, `Runtime Compilation`, 
   `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`,
   `Authorizatin`, `Authentication`, `JWT`, `Microservice`, 
-  `Design Patterns`, `Chain of Respondibility`
+  `Design Patterns`, `Chain of Respondibility`,
+  `State`, `Interpreter`
 </details>
 
 ## Modules/Homeworks
@@ -37,3 +38,4 @@ Certificate: (will be added later)
 - Design Patterns
   - [Chain of Responsibility](11-chain-of-responsibility)
   - [State](12-state)
+  - [Interpreter](13-interpreter)
