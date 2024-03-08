@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -75,6 +76,7 @@ class EventLoopTest {
     queue.put(command2);
 
     await()
+        .atLeast(500L, TimeUnit.MILLISECONDS)
         .until(() -> Stopped.class.equals(eventLoop.getState().getClass()));
 
     assertThat(queue).isEmpty();
