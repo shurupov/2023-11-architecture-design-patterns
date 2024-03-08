@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.shurupov.otus.architecture.control.User;
@@ -23,16 +24,19 @@ class PermissionNodeImplTest {
   public void init() {
 
     ioc = IoCFactory.simple();
+    ioc.resolve("IoC.Register", "Object.Add", (Function<Object[], Object>) (Object[] args) ->
+        ioc.resolve("IoC.Register", args)
+    );
 
-    BiFunction<Map<String, Object>, Object[], User> createUserAdapterFunction = (Map<String, Object> context, Object[] args) -> {
+    Function<Object[], User> createUserAdapterFunction = (Object[] args) -> {
       String id = (String) args[0];
       Map<String, Object> userObject = ioc.resolve(id);
-      return new UserImpl( (String) userObject.get("type"), (Map<String, List<String>>) userObject.get("permissions"));
+      return new UserImpl(userObject);
     };
 
     ioc.<Boolean>resolve("IoC.Register", "User.CreateFromObject", createUserAdapterFunction);
 
-    BiFunction<Map<String, Object>, Object[], User> createUserFunction = (Map<String, Object> context, Object[] args) -> {
+    Function<Object[], User> createUserFunction = (Object[] args) -> {
       String id = (String) args[0];
       String type = (String) args[1];
       Map<String, List<String>> permissions = new HashMap<>();
@@ -48,7 +52,7 @@ class PermissionNodeImplTest {
 
       Map<String, Object> user = new HashMap<>();
 
-      context.put(id, user);
+      ioc.resolve("Object.Add", id, user);
 
       user.put("type", type);
       user.put("permissions", permissions);

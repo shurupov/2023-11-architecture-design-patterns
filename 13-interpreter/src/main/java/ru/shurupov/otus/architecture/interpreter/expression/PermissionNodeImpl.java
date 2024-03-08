@@ -15,6 +15,9 @@ public class PermissionNodeImpl implements PermissionNode {
   @Override
   public Boolean interpret(IoC ioc) {
     User user = ioc.resolve("User.Get", userId);
+    if (user == null) {
+      return false;
+    }
     if (!userType.equals(user.getType())) {
       return false;
     }

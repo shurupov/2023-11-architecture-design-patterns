@@ -12,7 +12,7 @@ public class CheckObjectNodeImpl implements CheckObjectNode {
 
   @Override
   public Boolean interpret(IoC ioc) {
-    ObjectMeta object = ioc.resolve("Object.Get", objectId);
+    ObjectMeta object = ioc.resolve("Object.Meta.Get", objectId);
     return (object != null && objectType.equals(object.getType()));
   }
 }
