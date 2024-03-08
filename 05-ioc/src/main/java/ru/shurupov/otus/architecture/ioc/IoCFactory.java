@@ -9,6 +9,7 @@ import ru.shurupov.otus.architecture.ioc.context.RemoveScope;
 import ru.shurupov.otus.architecture.ioc.context.SelectParentScope;
 import ru.shurupov.otus.architecture.ioc.context.SelectScope;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocConsumerResolver;
+import ru.shurupov.otus.architecture.ioc.handler.resolve.IocContextFunctionResolver;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocContextProcessorHandler;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocFunctionResolver;
 import ru.shurupov.otus.architecture.ioc.handler.resolve.IocSupplierResolver;
@@ -32,6 +33,7 @@ public class IoCFactory {
         List.of(
             new IocContextProcessorHandler(),
             new IocFunctionResolver<>(),
+            new IocContextFunctionResolver<>(),
             new IocSupplierResolver<>(),
             new IocConsumerResolver()
         )
@@ -46,6 +48,7 @@ public class IoCFactory {
         List.of(
             new IocContextProcessorHandler(),
             new IocFunctionResolver<>(),
+            new IocContextFunctionResolver<>(),
             new IocSupplierResolver<>(),
             new IocConsumerResolver()
         )
