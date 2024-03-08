@@ -1,17 +1,15 @@
 package ru.shurupov.otus.architecture.interpreter.expression;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ru.shurupov.otus.architecture.interpreter.util.CommonContextPreparation.prepareCommon;
+import static ru.shurupov.otus.architecture.interpreter.util.ControlActionNodePreparation.prepareControlActionNode;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import ru.shurupov.otus.architecture.control.ControlAction;
-import ru.shurupov.otus.architecture.interpreter.impl.AccelerateControlAction;
-import ru.shurupov.otus.architecture.interpreter.impl.ShipAcceleratableAdapter;
 import ru.shurupov.otus.architecture.ioc.IoC;
 import ru.shurupov.otus.architecture.ioc.IoCFactory;
 
@@ -24,26 +22,8 @@ class ControlActionNodeImplTest {
   public void init() {
     ioc = IoCFactory.simple();
 
-    ioc.resolve("IoC.Register", "Object.Add", (Function<Object[], Object>) (Object[] args) ->
-        ioc.resolve("IoC.Register", args)
-    );
-
-    ioc.resolve("Object.Add", "ship1", new HashMap<>(Map.of(
-        "type", "ship",
-        "velocity", 0d
-    )));
-
-    ioc.resolve("Object.Add", "Object.Action", (Function<Object[], Object>) (Object[] args) -> {
-      return ioc.resolve("Action." + args[0]);
-    });
-
-    ioc.resolve("Object.Add", "Object.Action.Add", (Function<Object[], Object>) (Object[] args) -> {
-      return ioc.resolve("Object.Add", "Action." + args[0], args[1]);
-    });
-
-    ioc.resolve("Object.Add", "Accelerator.ship1", new ShipAcceleratableAdapter(ioc.resolve("ship1")));
-
-    ioc.resolve("Object.Action.Add", "ship1", new AccelerateControlAction(ioc.resolve("Accelerator.ship1")));
+    prepareCommon(ioc);
+    prepareControlActionNode(ioc);
   }
 
   @Test
