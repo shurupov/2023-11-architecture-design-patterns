@@ -15,8 +15,8 @@ Certificate: (will be added later)
   `Adapter`, `Command`, `Macrocommand`, `Inversion of Control`, `Factory`,
   `Abstract Factory`, `Adapter`, `Runtime Compilation`, 
   `Start Loop Command`, `Hard Stop Command`, `Soft Stop Command`,
-  `Authorizatin`, `Authentication`, `JWT`, `Microservice`, 
-  `Design Patterns`, `Chain of Respondibility`,
+  `Authorization`, `Authentication`, `JWT`, `Microservice`, 
+  `Design Patterns`, `Chain of Responsibility`,
   `State`, `Interpreter`
 </details>
 
